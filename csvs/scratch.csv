@@ -1,0 +1,6 @@
+[DUMMY:DUMMY],,,,
+
+*NULL,STR,0,RF_ORIGINAL_NAME,Original Name
+*NULL,LONG,0,RF_ORIGINAL_DEPTH,Original Depth
+*NULL,LONG,0,RF_ORIGINAL_SORT_POSITION,OriginalSortPosition
+;;,,,,

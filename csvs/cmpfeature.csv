@@ -1,0 +1,149 @@
+;; Sri Ganeshji : Sri Balaji : Sri Pitreshwarji : Sri Durgaji : Sri Venkateshwara,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; Section/Object,SDFId of Object,IsPrimary,IsRecursive,HasMstTree,HasValidFunc,HasPrepareFunc,RF Required 1,RF Required 2,Is OR Test,HasSplitFunc,HasIsEmptyFunc,ObjNameRF,Section Close,,,COMMENTS (must start with //),,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; FLD Name, Type,Level, RF Name, TDL Name, Default Value, Repeated, Object Name,MST OBJ Name, IsUnique, UniqueRF for Aggr / BaseDate For DateRange, SchemaInEditModeOnly,IsInherited,IsCacheRequired,SourceCollection,IsSysNameIsString,Required For Remoting,NatLang Accessible,NatLang Aliases,FromDateParmApplicable,ToDateParmApplicable,ValMethodParmApplicable,ScenarioParmApplicable,ObjIdentiferParm,View,IsConsumable,Read/Write,IsInitiallyGathered,IsEncrypted,IsExportable,RFSrcType,RFSrcTdlExp,RegeneratesObj,DependencyType,Is Status Type,Dependency,COMMENTS(muststartwith//)
+;;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; Subrecord for handling company features - this is frequently accessed from most of the places.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+[!CMP_FEATURE:CompanyFeature],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*FLD_CMP_SUB_REC_ID,LONG,,RF_CMP_SUB_REC_ID,NULL,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+[!+50],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;;Content starts from here,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_ACCOUNTING_ON,BOOL,,RF_IS_ACCOUNTING_ON,IsAccountingOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//WhetherAcctgfeaturesareenabled
+FLD_CMP_FEATURE_IS_INVENTORY_ON,BOOL,,RF_IS_INVENTORY_ON,IsInventoryOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//WhetherInv.featuresareenabled
+FLD_CMP_FEATURE_IS_INTEGRATED,BOOL,,RF_IS_INTEGRATED,IsIntegrated,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//WhetherClosingStockiscalculatedfromInventoryPosition
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_BILLWISE_ON,BOOL,,RF_IS_BILLWISE_ON,IsBillWiseOn,TV_TRUE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//Billwiseenabling
+FLD_CMP_FEATURE_IS_ALL_BILLWISE_ON,BOOL,,RF_IS_ALL_BILLWISE_ON,IsAllBillWiseOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//BillwiseisONforNon-Sundry/Creditorsalso
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_COST_CENTRES_ON,BOOL,,RF_IS_COST_CENTRES_ON,IsCostCentresOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//CostCentresenabling
+FLD_CMP_FEATURE_IS_COST_CATEGORY_ON,BOOL,,NULL,NULL,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//ParallelCostCentresisenabled
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_STOCK_CATEGORY_ON,BOOL,,NULL,NULL,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//StockCategoriesenabled
+FLD_CMP_FEATURE_IS_BATCHWISE_ON,BOOL,,RF_IS_BATCHWISE_ON,IsBatchWiseOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//BatchwisehandlingisON...AND...
+FLD_CMP_FEATURE_IS_PERISHABLE_ON,BOOL,,RF_IS_PERISHABLE_ON,IsPerishableOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//...theyarePerishable
+FLD_CMP_FEATURE_IS_MULTI_GODOWN_ON,BOOL,,NULL,NULL,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//Multi-Godownhandlingisenabled
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_MULTI_CURRENCY_ON,BOOL,,NULL,NULL,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//Multi-Currencyhandlingisenabled
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_INVOICING_ON,BOOL,,RF_IS_INVOICING_ON,IsInvoicingOn,TV_TRUE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//WhetherInvoicingfeaturesareenabled!
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_REV_JRNL_ON,BOOL,,NULL,NULL,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//WhetherRevJrnlconceptisenabled
+FLD_CMP_FEATURE_IS_REMINDERS_ON,BOOL,,RF_IS_REMINDERS_ON,IsRemindersOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//Whetherreminderalarmsareenabled
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_DCNOTE_ON,BOOL,,RF_IS_DCNOTE_ON,IsDCNoteOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//WhetherD/CNotehandlingisenabled
+FLD_CMP_FEATURE_IS_REJECTION_ON,BOOL,,RF_IS_REJECTION_ON,IsRejectionOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//Rejectionsnotesareactive
+FLD_CMP_FEATURE_IS_TRACKING_ON,BOOL,,NULL,NULL,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//WhetherGoodsInward/Outwardhandlingisenabled
+FLD_CMP_FEATURE_IS_EXCISE_ON,BOOL,,RF_IS_EXCISE_ON,IsExciseOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//WhetherExciseorientedinvoicesneedtobehandled
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_CHQ_PRINTING_ON,BOOL,,RF_IS_CHQ_PRINTING_ON,IsChqPrintingOn,TV_TRUE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//WhetherChequePrintingEnabled
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_DIFF_ACTUAL_QTY,BOOL,,RF_DIFF_ACTUAL_QTY,DiffActualQty,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_USE_ZERO_ENTRIES,BOOL,,RF_USE_ZERO_ENTRIES,UseZeroEntries,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_ADDL_AMOUNT,BOOL,,RF_ADDL_AMOUNT,AddlAmount,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_TALLYAUDIT_ON,BOOL,,RF_TALLYAUDIT_ON,IsTallyAuditOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_BUDGETS_ON,BOOL,,NULL,NULL,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_PAYROLL_ON,BOOL,,RF_IS_PAYROLL_ON,IsPayrollOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_TDS_ON,BOOL,,RF_IS_TDS_ON,IsTDSOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//WhetherTDSisenabled.
+FLD_CMP_FEATURE_IS_SERVICE_TAX_ON,BOOL,,RF_IS_SERVICE_TAX_ON,IsServiceTaxOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//WhetherServiceTaxisenabled.
+FLD_CMP_FEATURE_IS_JOB_COSTING_ON,BOOL,,RF_IS_JOB_COSTING_ON,IsJobCostingOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//WhetherJobCostingisenabled.
+FLD_CMP_FEATURE_IS_TCS_ON,BOOL,,RF_IS_TCS_ON,IsTcsOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//WhetherTCSisenabled.
+FLD_CMP_FEATURE_IS_EXC_REPORTS_ON,BOOL,,RF_IS_EXC_REPORTS_ON,IsExciseReportsOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//WhetherExciseReportIsenabled
+FLD_CMP_FEATURE_IS_COMPOSITE_DEALER,BOOL,,RF_IS_COMPOSITE_DEALER,IsCompositeDealer,TV_FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_BOM_ON,BOOL,,RF_BOM_ON,IsBOMOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_SALES_ORDERS_ON,BOOL,,NULL,NULL,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_PURC_ORDERS_ON,BOOL,,NULL,NULL,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_DISCOUNTS_ON,BOOL,,RF_DISCOUNTS_ON,IsDiscountsOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_CNOTE_AS_INVOICE,BOOL,,RF_CNOTE_AS_INVOICE,CNoteAsInvoice,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_UK_VAT_RETURNS,BOOL,,RF_UK_VAT_RETURNS,UKVATReturns,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_USE_PRICE_LEVELS,BOOL,,RF_USE_PRICE_LEVELS,UsePriceLevels,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_INTEREST_CALC_ON,BOOL,,RF_IS_INTEREST_CALC_ON,IsInterestOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_ADV_INTEREST_ON,BOOL,,RF_IS_ADV_INTEREST_ON,IsAdvInterestOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_PURC_AS_INVOICE,BOOL,,RF_PURC_AS_INVOICE,PurcAsInvoice,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_USE_AUTO_COST,BOOL,,NULL,NULL,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_DNOTE_AS_INVOICE,BOOL,,RF_DNOTE_AS_INVOICE,DNoteAsInvoice,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_PL_AS_INCOME_EXPENSE,BOOL,,NULL,NULL,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_ALLOW_IN_MOBILE,BOOL,,RF_ALLOW_IN_MOBILE,AllowinMobile,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_INDENT_ON,BOOL,,RF_IS_INDENT_ON,IsIndentOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_FBT_ON,BOOL,,RF_IS_FBT_ON,IsFBTOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_EXCISE_TRADER_ON,BOOL,,RF_IS_EXCISE_TRADER_ON,IsExciseMfgrTraderOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_SALES_TAX_ON,BOOL,,RF_IS_SALES_TAX_ON,IsSalesTaxOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_VAT_DEALER_TYPE,SYSID,,RF_VAT_DEALER_TYPE,VATDealerType,SN_REGULAR,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//VATDealerTypeholdsthetypeofVAT
+FLD_CMP_FEATURE_IS_PAYROLL_STAT_ON,BOOL,,RF_IS_PAYROLL_STAT_ON,IsPayrollStatOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_CONNECT_NAME,STR,,RF_CONNECT_NAME,ConnectName,NULL,FALSE,NULL,,,,,,,,,,TRUE,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_CONNECT_CMP,BOOL,,RF_CONNECT_CMP,ConnectCompany,TV_TRUE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_CONNECT_ON_LOAD,BOOL,,RF_CONNECT_ON_LOAD,ConnectCompanyOnLoad,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_SMS_SHORT_CODE,STR,,RF_SMS_SHORT_CODE,SMSShortCode,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_SMS_PREFIX,STR,,RF_SMS_PREFIX,SMSPrefix,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_CONTACT_PERSON,STR,,RF_CONTACT_PERSON,CompanyContactPerson,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_CONTACT_NUMBER,STR,,RF_CONTACT_NUMBER,CompanyContactNumber,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_ENTRY_TAX_APPL,BOOL,,RF_IS_ENTRY_TAX_APPLICABLE,IsEntryTaxApplicable,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_REV_LED_FOR_OP_BAL,BOOL,,RF_REV_LED_FOR_OP_BAL,RevenueLedForOpBal,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_SMS_CMP_NAME,STR,,RF_SMS_CMP_NAME,CompanySMSName,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_ENABLE_SMS_ACCESS,BOOL,,RF_ENABLE_SMS_ACCESS,EnableSMSAccess,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_RCPTS_PYMNTS_ON,BOOL,,RF_IS_RCPTS_PYMNTS_ON,IsRcptsPymtsOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,\\Whetherrecieptsandpaymentsenabled.
+FLD_CMP_FEATURE_ENABLE_LOGO_PRINTING,BOOL,,RF_ENABLE_LOGO_PRINTING,IsLogoEnabled,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_LOGO_PATH,STR,,RF_LOGO_PATH,LogoPath,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_XBRL_ON,BOOL,,RF_IS_XBRL_ON,IsXBRLOn,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_PROPERTIERSHIP,BOOL,,RF_IS_PROPERTIERSHIP,IsProprietorship,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_YEAR_WISE,BOOL,,RF_IS_YEAR_WISE,IsYearWise,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_LTU_ON,BOOL,,RF_IS_LTU_ON,IsCmpLTUOn,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_CHQ_NAME,STR,,RF_CMP_CHQ_NAME,CompanyChequeName,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_CHQ_BANKS,AGGR,,RF_CMP_CHQ_BANKS,CompanyChequeBanks,NULL,TRUE,OBJ_CMP_CHQ_BANKS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_AUTO_COST_LIST,AGGR,,RF_AUTO_COST_LIST,AutoCostList,NULL,TRUE,OBJ_AUTO_COST_LIST,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_MOBILE_NUMBERS,STR,,RF_MOBILE_NUMBERS,MobileNumbers,NULL,TRUE,NULL,,,,,,,,,,TRUE,,,,,,,,,,,,,,,,,,,//BGNOTE
+FLD_CMP_FEATURE_IS_MULTI_ADDR_ON,BOOL,,RF_IS_MULTI_ADDR_ON,IsMultiAddressOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//Tocheckifmultiaddressison.
+FLD_CMP_FEATURE_MULTI_ADDRESS,AGGR,,RF_MULTI_ADDRESS,MultiAddressList,NULL,TRUE,OBJ_MULTI_ADDRESS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_EBANKING_ON,BOOL,,RF_IS_EBANKING_ON,IsEbankingOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_JOBWORK_ON,BOOL,,RF_IS_JOBWORK_ON,IsJobWorkOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_USE_MATTRANSFER_ON,BOOL,,NULL,NULL,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_COST_TRACKING_ON,BOOL,,RF_IS_COST_TRACKING_ON,IsCostTrackingOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_SHOW_BANK_DETAILS,SYSID,,RF_SHOW_BANK_DETAILS,ShowBankDetails,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_BENEFICIARY_CODE_ON,BOOL,,RF_IS_BENEFICIARY_CODE_ON,IsBeneficiaryCodeOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_TRANSFERMODE_ON,BOOL,,RF_IS_TRANSFERMODE_ON,IsTransferModeOn,TV_TRUE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_BANKING_CC_ON,BOOL,,RF_IS_BANKING_CC_ON,IsBankingforCCOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_IMP_BANK_VCH_ON,BOOL,,RF_IS_IMP_BANK_VCH_ON,IsImpBankDetailsOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_APPROVAL_ON,BOOL,,RF_IS_APPROVAL_ON,IsApprovalOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_GENERATE_BATCHES_ON,STR,,RF_GENERATE_BATCHES_ON,GenerateBatchesOn,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_EXPORT_ON_VCH_CREATE,BOOL,,RF_IS_EXPORT_ON_VCH_CREATE,IsExportOnVchCreate,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_EXPORT_WITH_ERRORS,BOOL,,RF_IS_EXPORT_WITH_ERRORS,IsExportWithErrors,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_RESET_BANK_STATUS,BOOL,,RF_IS_RESET_BANK_STATUS,IsResetBankStatus,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_DEFAULT_TRANSACTION_TYPE,AGGR,,RF_DEFAULT_TRANSACTION_TYPE,DefaultTransactionType,NULL,TRUE,OBJ_DEFAULT_TRANSACTION_TYPE,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_NACH_BANK_LISTS,AGGR,,RF_NACH_BANK_LISTS,NachBankLists,NULL,TRUE,OBJ_NACH_BANK_LISTS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_NACH_VERSION,NUM,,RF_NACH_VERSION,NACHVersion,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_RTGS_LIMIT,AMT,,RF_RTGS_LIMIT,RTGSLimit,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_ISO_CUR_APP,BOOL,,RF_IS_ISO_CUR_APP,IsISOCurrencyApplicable,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_NOTIONAL_BANKS,AGGR,,RF_NOTIONAL_BANKS,NotionalBanks,NULL,TRUE,OBJ_CMP_NOT_BANKS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_PRICE_LEVEL, STR,, RF_PRICE_LEVEL, Price Level, NULL, TRUE, NULL ,,TRUE,RF_PRICE_LEVEL, ,,,,,,,,,,,,,,,,,,,,,,,,,        //BGNOTE
+FLD_CMP_FEATURE_IS_SALESTAXCESS_ON,BOOL,, RF_IS_SALESTAXCESS_ON,IsSalesTaxCessOn,TV_FALSE, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_GST_ON,BOOL,,RF_IS_GST_ON,IsGSTOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,42,
+FLD_CMP_FEATURE_IS_GST_CLASSIF_ON,BOOL,,RF_IS_GST_CLASSIF_ON,IsGSTClassifOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_GST_MULTIPLE_REG_ON,BOOL,,RF_IS_GST_MULTIPLE_REG_ON,IsGSTMultipleRegOn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_TDS_MULTIPLE_REG_ON, BOOL,,RF_IS_TDS_MULTIPLE_REG_ON,IsTDSMultipleRegOn,TV_FALSE, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        //    Multi-TDS handling is enabled
+FLD_CMP_FEATURE_IS_TCS_MULTIPLE_REG_ON, BOOL,,RF_IS_TCS_MULTIPLE_REG_ON,IsTCSMultipleRegOn,TV_FALSE, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        //    Multi-TCS handling is enabled
+FLD_CMP_FEATURE_IS_VAT_MULTIPLE_REG_ON, BOOL,,RF_IS_VAT_MULTIPLE_REG_ON,IsVATMultipleRegOn,TV_FALSE, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        //    Multi-VAT handling is enabled
+FLD_CMP_FEATURE_IS_EXC_MULTIPLE_REG_ON, BOOL,,RF_IS_EXC_MULTIPLE_REG_ON,IsEXCMultipleRegOn,TV_FALSE, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        //    Multi-Excise handling is enabled
+FLD_CMP_FEATURE_IS_CESS_ON,BOOL,,RF_IS_CESS_ON,IsCessOn,TV_TRUE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMP_FEATURE_IS_DEFER_ITC,BOOL,,RF_IS_DEFER_ITC,IsDeferITC,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*NULL,BOOL,,RF_IS_BUDGETS_ON, IsBudgetsOn,TV_FALSE, FALSE, NULL ,, , , ,,,,,,             ,,,,,,,,,,,,,,,,,,,       
+*NULL,BOOL,,RF_USE_AUTO_COST, UseAutoCost,TV_FALSE, FALSE, NULL                                      ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,
+*NULL,BOOL,,RF_IS_STOCK_CATEGORY_ON, IsStockCategoryOn,TV_FALSE, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        //    Stock Categories enabled
+*NULL,BOOL,,RF_IS_COST_CATEGORY_ON, IsCostCategoryOn,TV_FALSE, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        //    Parallel Cost Centres is enabled
+*NULL,BOOL,,RF_IS_MULTI_CURRENCY_ON, IsMultiCurrencyOn,TV_FALSE, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        //    Multi-Currency handling is enabled
+*NULL,BOOL,,RF_IS_MULTI_GODOWN_ON, IsMultiGodownOn,TV_FALSE, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        //    Multi-Godown handling is enabled
+*NULL,BOOL,,RF_PL_AS_INCOME_EXPENSE, PLasIncomeExpense,TV_FALSE, FALSE, NULL                  ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,
+*NULL,BOOL,,RF_IS_TRACKING_ON, IsTrackingOn,TV_FALSE, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        //    Whether any one of the delivery note/receipt note/rejection in/rejection out voucher type is made active
+*NULL,BOOL,,RF_IS_SALES_ORDERS_ON, IsSalesOrdersOn,TV_FALSE, FALSE, NULL                           ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,
+*NULL,BOOL,,RF_IS_PURC_ORDERS_ON, IsPurcOrdersOn,TV_FALSE, FALSE, NULL                              ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,
+*NULL,BOOL,,RF_IS_USE_MATTRANSFER_ON, IsMaterialTransferOn,TV_FALSE, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*NULL,BOOL,,RF_IS_REV_JRNL_ON,IsRevJrnlOn,TV_FALSE, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

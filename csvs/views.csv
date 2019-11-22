@@ -1,0 +1,13 @@
+;; Section/Object ,SDFId of Object,IsPrimary,IsRecursive,HasMstTree,HasValidFunc,HasPrepareFunc,RF Required 1,RF Required 2,Is OR Test,HasSplitFunc,HasIsEmptyFunc,ObjNameRF,HasViews,Section Close,COMMENTS (must start with //),
+;; FLD Name, Type,Level, RF Name, TDL Name, Default Value, Repeated, Object Name,MST OBJ Name, IsUnique, UniqueRF for Aggr / BaseDate For DateRange, SchemaInEditModeOnly,IsInherited,IsCacheRequired,SourceCollection,IsSysNameIsString,COMMENTS (must start with //)
+,,,,,,,,,,,,,,,,
+;;Object View Defintions,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+[OBJVIEWS:VOUCHER],,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+SN_INVVIEW,,,,,,,,,,,,,,,,
+SN_PAYROLLVIEW,,,,,,,,,,,,,,,,
+SN_STKJRNLVIEW,,,,,,,,,,,,,,,,
+SN_ACCTGVIEW,,,,,,,,,,,,,,,,
+SN_MFGJRNLVIEW,,,,,,,,,,,,,,,,
+SN_GSTNVIEW,,,,,,,,,,,,,,,,

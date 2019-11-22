@@ -1,0 +1,49 @@
+;; Sri Ganeshji : Sri Balaji : Sri Pitreshwarji : Sri Durgaji : Sri Venkateshwara,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; Section/Object,SDFId of Object,IsPrimary,IsRecursive,HasMstTree,HasValidFunc,HasPrepareFunc,RF Required 1,RF Required 2,Is OR Test,HasSplitFunc,HasIsEmptyFunc,ObjNameRF,Section Close,,,COMMENTS (must start with //),,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; FLD Name, Type,Level, RF Name, TDL Name, Default Value, Repeated, Object Name,MST OBJ Name, IsUnique, UniqueRF for Aggr / BaseDate For DateRange, SchemaInEditModeOnly,IsInherited,IsCacheRequired,SourceCollection,IsSysNameIsString,Required For Remoting,NatLang Accessible,NatLang Aliases,FromDateParmApplicable,ToDateParmApplicable,ValMethodParmApplicable,ScenarioParmApplicable,ObjIdentiferParm,View,IsConsumable,Read/Write,IsInitiallyGathered,IsEncrypted,IsExportable,RFSrcType,RFSrcTdlExp,RegeneratesObj,DependencyType,Is Status Type,Dependency,COMMENTS(muststartwith//)
+;;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; Subrecord for handling service tax details of company,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+[!CMP_ST:CompanyST],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*FLD_CMP_SUB_REC_ID,LONG,,RF_CMP_SUB_REC_ID,NULL,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+[!+50],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;;Content starts from here,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPST_REG_NO, STR,, RF_ST_REG_NO, ST Reg Number, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // Registration number
+FLD_CMPST_REG_DATE, DATE,, RF_ST_REG_DATE, ST Reg Date, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // registration date
+FLD_CMPST_ASSESSEE_CODE, STR,, RF_ST_ASSESSEE_CODE, ST Assessee Code, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // assessee code
+FLD_CMPST_ORG_TYPE, STR,, RF_ST_ORG_TYPE, ST Org Type, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // organization type
+FLD_CMPST_MAJOR_SERVICE, STR,, RF_ST_MAJOR_SERVICE, ST Major Service, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // major service
+FLD_CMPST_CR_ADJ_PERCENT, NUM,, RF_ST_CR_ADJ_PERCENT, ST Cr Adj Percent, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // Credit Adjustment Percentage
+FLD_CMPST_DIVISION_CODE, STR,, RF_ST_DIVISION_CODE, ST Division Code, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // division code
+FLD_CMPST_DIVISION_NAME, STR,, RF_ST_DIVISION_NAME, ST Division Name, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // division name
+FLD_CMPST_RANGE_CODE, STR,, RF_ST_RANGE_CODE, ST Range Code, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // range code
+FLD_CMPST_RANGE_NAME, STR,, RF_ST_RANGE_NAME, ST Range Name, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // range name
+FLD_CMPST_COMMRT_CODE, STR,, RF_ST_COMMRT_CODE, ST Commrt Code, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // Commissionerate Code
+FLD_CMPST_COMMRT_NAME, STR,, RF_ST_COMMRT_NAME, ST Commrt Name, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // Commissionerate name
+FLD_CMPST_FOCAL_BANK_CODE, STR,, RF_ST_FOCAL_BANK_CODE, ST Focal Bank Code, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // focal bank code
+FLD_CMPST_FOCAL_BANK_NAME, STR,, RF_ST_FOCAL_BANK_NAME, ST Focal Bank Name, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // focal bank name
+FLD_CMPST_FOCAL_BANK_ADDR, STR,, RF_ST_FOCAL_BANK_ADDR, ST Focal Bank Addr, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // 1 - N focal bank addr
+FLD_CMPST_ADJ_EXPENSES, STR,, RF_ST_ADJ_EXPENSES, ST Adj Expenses, NULL, FALSE, NULL ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPST_IS_ST_LARGE_TAX_PAYER,BOOL,, RF_CMP_ST_IS_ST_LARGE_TAX_PAYER, STIsSTLargeTaxPayer, NULL, FALSE, NULL ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPST_LARGE_TAX_PAYER_UNIT,STR,, RF_CMP_ST_LARGE_TAX_PAYER_UNIT, STLargeTaxPayerUnit, NULL, FALSE, NULL ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPST_PREMISES_CODE_NO,STR,, RF_CMP_ST_PREMISES_CODE_NO, STPremisesCodeNo, NULL, FALSE, NULL ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPSTX_ROUNDOFF_APPLICABLE,BOOL,,RF_STX_ROUNDOFF_APPLICABLE, STXIsRoundOffApplicable,TV_TRUE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//bool to check if Rounding is applicable or not.  
+FLD_CMPST_LIABILITY_TYPE,SYSID,,RF_ST_LIABILITY_TYPE, ServiceTaxLiabilityType, NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,//bool to check if Rounding is applicable or not.  
+FLD_CMPST_DETAILS_SERVICE_TAX_IS_SEZ,BOOL,,RF_CMP_ST_SERVICE_TAX_IS_SEZ,ServiceTaxIsSEZ, NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPST_DETAILS_ST_IS_MULTI_UNIT,BOOL,,RF_ST_IS_MULTI_UNIT,STIsMultiUnit, NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPST_DETAILS_ST_USER_DEFINED_CLASS,BOOL,,RF_ST_USER_DEFINED_CLASS,STUserDefinedClass, NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPST_DETAILS_ST_IS_INPUT_SERV_DISTRIBUTOR,BOOL,,RF_ST_IS_INPUT_SERV_DISTRIBUTOR,STIsInputServDistributor, NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPST_IS_STOCKITEM_ON,BOOL,,RF_ST_IS_STKITEM_ON,IsSTStockItemOn, NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPST_DETAILS_SERVICE_TAX_DET,AGGR,,RF_SERVICE_TAX_DET,ServiceTaxDetails, NULL,TRUE,OBJ_SERVICE_TAX_DETAILS,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPST_DETAILS_ST_TAX_LIAB_COMPUTE_DET,AGGR,,RF_ST_TAX_LIAB_COMPUTE_DET,STTaxLiabComputeDtls, NULL,TRUE,OBJ_ST_TAXLIAB_COMPU_DET,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPST_REV_APPLICABLE,BOOL,,RF_IS_REV_CHARGE_APPLICABLE,IsReverseApplicable, NULL, FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPST_REV_CHARGE_TYPE,SYSID,,RF_ST_REV_CHARGE_TYPE,RevChargeType,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPST_IS_MONTHLY_RETURNS,BOOL,, RF_ST_IS_MONTHLY_RETURNS,STIsMonthlyReturns, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // for monthly returns in service tax 
+FLD_CMPST_DEACTIVATE_FROM,DATE,,RF_ST_DEACTIVATE_FROM,DeactivateServiceTaxFrom,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPST_MAINTAIN_SEP_ACC_FOR_EXEMPT,BOOL,,RF_ST_MAINTAIN_SEP_ACC_FOR_EXEMPT,STMaintainSepAccForExempt,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPST_PYMT_DUE_DATE,NUM,,RF_ST_PYMT_DUE_DATE,STPymtDueDate,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPST_PYMT_PERIOD,SYSID,,RF_ST_PYMT_PERIOD,STPymtPeriod,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPST_OBJ_CRC,LONG,,NULL,NULL,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

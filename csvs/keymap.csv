@@ -1,0 +1,18 @@
+;; Sri Ganeshji : Sri Balaji : Sri Pitreshwarji : Sri Durgaji : Sri Venkateshwara ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; Section/Object ,SDFId of Object,IsPrimary,IsRecursive,HasMstTree,HasValidFunc,HasPrepareFunc,RF Required 1,RF Required 2,Is OR Test,HasSplitFunc,HasIsEmptyFunc,ObjNameRF,Natural Language Accessible,NatLangAliases,HasViews,UseFastCaching,Can Regenerate,GetPvtFuncs,HasMsgPrepareFunc,Use,Section Close,COMMENTS (must start with //),,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+[!KEY_MAP],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; Common details,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+[!1],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; Common FLD's which are used by other masters also,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; FLD Name, Type,Level, RF Name, TDL Name, Default Value, Repeated, Object Name,MST OBJ Name, IsUnique, UniqueRF for Aggr / BaseDate For DateRange, SchemaInEditModeOnly,IsInherited,IsCacheRequired,SourceCollection,IsSysNameIsString,Required For Remoting,NatLang Accessible,NatLang Aliases,FromDateParmApplicable,ToDateParmApplicable,ValMethodParmApplicable,ScenarioParmApplicable,ObjIdentiferParm,View,IsConsumable,Read/Write,IsInitiallyGathered,IsEncrypted,IsExportable,RFSrcType,RFSrcTdlExp,RegeneratesObj,DependencyType,Is Status Type,COMMENTS(muststartwith//)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_KEYMAP_OBJ_TYPE, LONG,, NULL, NULL, NULL,FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, //  of type OBJ_xxx (see appenum.h) 
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+[!+100]  ;; Basic Info,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_KEYMAP_KEY,STR,,RF_KEY,Key,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_KEYMAP_KEY_INFO,AGGR,,RF_AGGR_KEY_INFO,AggrKeyInfo,FALSE,TRUE,OBJ_AGGR_KEY,,,,,,,,,,,,,,,,,,,,,,,,,,,,

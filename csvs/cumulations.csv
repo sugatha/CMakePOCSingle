@@ -1,0 +1,326 @@
+;; Sri Ganeshji : Sri Balaji : Sri Pitreshwarji : Sri Durgaji : Sri Venkateshwara,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; Section/Object,SDFId of Object,IsPrimary,IsRecursive,HasMstTree,HasValidFunc,HasPrepareFunc,RF Required 1,RF Required 2,Is OR Test,HasSplitFunc,HasIsEmptyFunc,ObjNameRF,Section Close,,,COMMENTS (must start with //),,,,,,,,,,,,,,,,,,,
+;; FLD Name, Type,Level, RF Name, TDL Name, Default Value, Repeated, Object Name,MST OBJ Name, IsUnique, UniqueRF, SchemaInEditModeOnly,IsInherited,IsCacheRequired,SourceCollection,IsSysNameIsString,Required For Remoting,NatLang Accessible,NatLang Aliases,FromDateParmApplicable,ToDateParmApplicable,ValMethodParmApplicable,ScenarioParmApplicable,ObjIdentiferParm,View,IsConsumable,Read/Write,IsInitiallyGathered,IsEncrypted,IsExportable,RFSrcType,RFSrcTdlExp,RegeneratesObj,DependencyType,Is Status  Type,COMMENTS(muststartwith//)
+;;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+[*MASTER],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+[!ACCUMS] // cumulations,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_MST_CHILDREN, LONG,, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Number of entries (groups/ledgers) which are it children
+FLD_MST_VOUCHER_USE_COUNT, LONG,, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,                                                               
+FLD_MST_MASTER_USE_COUNT, LONG,, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,                                                                
+FLD_MST_FOREX_COUNT, LONG,, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  number of Forex entries
+FLD_MST_RECOMPUTE_COUNT,LONG,,NULL,NULL,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_MST_NUM_UPLD_VCH, LONG,, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_MST_NUM_RECON_VCH, LONG,, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;;Accum definitions - for user defined  SUM of values,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_MST_MASTER_AGGR_VALUES,AGGR,, NULL, NULL, NULL,FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_AGGR_VALUE_INFO,AGGR,1,RF_AGGR_VALUE_INFO,QuaAggrValueInfo,FALSE,TRUE,OBJ_AGGR_VALUE,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_AGGR_KEY_INFO,AGGR,1,RF_AGGR_KEY_INFO,AggrKeyInfo,FALSE,TRUE,OBJ_AGGR_KEY,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+/******************** LEDGER Cumulations **************/                                                                     ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+[!LEDGER:Ledger,LE,TRUE,FALSE,TRUE ,FALSE,],,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_LED_MTH_INFO, AGGR,, NULL, NULL, NULL, TRUE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Qualified on JULMTH
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_LED_CR_AMT, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,                                                                       
+    FLD_LED_DR_AMT, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,                                                                       
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_LED_CFLOW_IN_AMT, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,                                                                 
+    FLD_LED_CFLOW_OUT_AMT, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,                                                                
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_LED_ONACCOUNT_AMT, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,                                                                
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_COST_PAYROLL_DR_AMT, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  qualified on Ledger Account Id
+    *FLD_COST_PAYROLL_CR_AMT, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  qualified on Ledger Account Id
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_LED_INTEREST_HISTORY, LONG,, RF_OPENING_INTEREST_DATE, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Qua on Date - gives num voucher on that day. These are 'interest applied' vchrs.
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_LED_COST_INFO,AGGR,,NULL,NULL,NULL,TRUE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // Qua of Cost Centre … same general info as FLD_LED_MTH_INFO although uses fewer active fields
+    *FLD_LED_MTH_INFO, AGGR,1, NULL, NULL, NULL, TRUE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Qualified on JULMTH
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_LED_TAXOBJ_ASSESS_AMT,AMT,,NULL,NULL,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+/******************** COST Cumulations ****************/                                                                     ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+[!CSTCTR:Cost Center,CC,TRUE,FALSE,TRUE ,FALSE,],,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_COST_MTH_INFO, AGGR,, NULL, NULL, NULL, TRUE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Qualified on JULMTH
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_COST_CR_AMT, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,                                                                      
+    FLD_COST_DR_AMT, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,                                                                      
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_COST_ATTD_QTY, QTY,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  qualified on Attendance Type Account Id
+    FLD_COST_ATTD_NUM,NUM,1,NULL,NULL,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_COST_PAYROLL_DR_AMT, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  qualified on Ledger Account Id
+    FLD_COST_PAYROLL_CR_AMT, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  qualified on Ledger Account Id
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_TOTAL_QTY_IN, QTY,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL Qty in (nett of rejections)
+    *FLD_STKI_TOTAL_QTY_OUT, QTY,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL Qty  out (nett of rejections)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_TOTAL_VALUE_IN, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Purchase value (nett of rejections)
+    *FLD_STKI_TOTAL_VALUE_OUT, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Sale value (nett of rejections)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_COST_LED_INFO,AGGR,,NULL,NULL,NULL,TRUE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // qualified on Ledger Account Id
+    *FLD_COST_MTH_INFO, AGGR,1, NULL, NULL, NULL, TRUE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Qualified on JULMTH
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_COST_STKI_INFO,AGGR,,NULL,NULL,NULL,TRUE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // qualified on StkItem
+    *FLD_COST_MTH_INFO, AGGR,1, NULL, NULL, NULL, TRUE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Qualified on JULMTH
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_COST_ATTD_INFO,AGGR,,NULL,NULL,NULL,TRUE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // qualified on StkItem
+    *FLD_COST_MTH_INFO, AGGR,1, NULL, NULL, NULL, TRUE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Qualified on JULMTH
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+/******************** ATTENDANCE  Cumulations ****************/                                                                     ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+[!ATTD_TYPE:Attendance Type : AttendanceTypes,AT,TRUE,TRUE, TRUE,TRUE,,,,,,,,],,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_ATTD_MTH_INFO, AGGR,, NULL, NULL, NULL, TRUE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Qualified on JULMTH
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_ATTD_COST_QTY, QTY,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  qualified on Attendance Type Account Id
+    FLD_ATTD_COST_NUM,NUM,1,NULL,NULL,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_ATTD_COST_INFO,AGGR,,NULL,NULL,NULL,TRUE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // qualified on Ledger Account Id
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_ATTD_MTH_INFO, AGGR,1, NULL, NULL, NULL, TRUE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Qualified on JULMTH
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+/******************** STKITEM Cumulations **************/                                                                    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+[!STKITEM:Stock Item,SI,TRUE,FALSE,TRUE ,FALSE,],,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_STKI_MTH_INFO, AGGR,, NULL, NULL, NULL, TRUE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  qualified by JUL-MTH
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_STKI_TOTAL_QTY_IN, QTY,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL Qty in (nett of rejections)
+    FLD_STKI_TOTAL_QTY_OUT, QTY,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL Qty  out (nett of rejections)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_STKI_BILLED_QTY_IN, QTY,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Purchase (nett of Rejections)
+    FLD_STKI_BILLED_QTY_OUT, QTY,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Sales (nett of Rejections)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_STKI_PURC_QTY_IN, QTY,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Purchase (nett of Rejections)
+    FLD_STKI_SALE_QTY_OUT, QTY,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Sales (nett of Rejections)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_STKI_JRNL_QTY_IN, QTY,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Stock Jrnl transfers IN
+    FLD_STKI_JRNL_QTY_OUT, QTY,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Stock Jrnl transfers OUT
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_STKI_MFG_QTY_IN, QTY,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Mfg Jrnl IN (Qty manufactured)
+    FLD_STKI_MFG_QTY_OUT, QTY,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Mfg Jrnl OUT (Qty used for manufacture)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_STKI_PHYS_QTY_DIFF, QTY,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Diff in Phys Count for this mth
+    FLD_STKI_PHYS_VAL_DIFF, AMT,1, NULL, NULL, NULL, FALSE, NULL                                                              ,,,,                                                                    ,,,,,,,,,,,,,,,,,,,,,,,, //  Diff in Phys Value for this mth (for non-unit based items)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_STKI_TOTAL_VALUE_IN, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Purchase value (nett of rejections)
+    FLD_STKI_TOTAL_VALUE_OUT, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Sale value (nett of rejections)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_STKI_BILLED_VALUE_IN, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Purchase value (nett of rejections)
+    FLD_STKI_BILLED_VALUE_OUT, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Sale value (nett of rejections)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_STKI_JRNL_VALUE_IN, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Value cumulated thru Stock Jrnl
+    FLD_STKI_JRNL_VALUE_OUT, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Value depleted thru Stock Jrnl
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_STKI_MFG_VALUE_IN, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Value cumulated thru Mfg Jrnl
+    FLD_STKI_MFG_VALUE_OUT, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Value depleted thru Mfg Jrnl
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_STKI_ADDL_PURC_VALUE_IN, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Addl. costs allocated during PURCHASE
+    FLD_STKI_ADDL_JRNL_VALUE_IN, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Addl. costs allocated thru Stock Jrnl
+    FLD_STKI_ADDL_MFG_VALUE_IN, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Addl. costs allocated thru MFG Jrnl
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_STKI_DISCOUNT_VALUE_OUT, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Discounts given during Sales  
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_STKI_TOTAL_ADDL_VALUE_IN, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Purchase value (nett of rejections)
+    FLD_STKI_TOTAL_ADDL_VALUE_OUT, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Sale value (nett of rejections)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_STKI_GDWN_INFO, AGGR,, NULL, NULL, NULL, TRUE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  qualified by GODOWN ID - the MTH_INFO structure then repeats below it
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+  *FLD_STKI_MTH_INFO, AGGR,1, NULL, NULL, NULL, TRUE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  qualified by JUL-MTH
+    *FLD_STKI_TOTAL_QTY_IN, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL Qty in (nett of rejections)
+    *FLD_STKI_TOTAL_QTY_OUT, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL Qty  out (nett of rejections)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_BILLED_QTY_IN, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Purchase (nett of Rejections)
+    *FLD_STKI_BILLED_QTY_OUT, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Sales (nett of Rejections)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_PURC_QTY_IN, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Purchase (nett of Rejections)
+    *FLD_STKI_SALE_QTY_OUT, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Sales (nett of Rejections)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_JRNL_QTY_IN, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Stock Jrnl transfers IN
+    *FLD_STKI_JRNL_QTY_OUT, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Stock Jrnl transfers OUT
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_MFG_QTY_IN, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Mfg Jrnl IN (Qty manufactured)
+    *FLD_STKI_MFG_QTY_OUT, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Mfg Jrnl OUT (Qty used for manufacture)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_PHYS_QTY_DIFF, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Diff in Phys Count for this mth
+    *FLD_STKI_PHYS_VAL_DIFF, AMT,2, NULL, NULL, NULL, FALSE, NULL                                                              ,,,,                                                                    ,,,,,,,,,,,,,,,,,,,,,,,, //  Diff in Phys Value for this mth (for non-unit based items)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_TOTAL_VALUE_IN, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Purchase value (nett of rejections)
+    *FLD_STKI_TOTAL_VALUE_OUT, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Sale value (nett of rejections)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_BILLED_VALUE_IN, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Purchase value (nett of rejections)
+    *FLD_STKI_BILLED_VALUE_OUT, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Sale value (nett of rejections)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_JRNL_VALUE_IN, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Value cumulated thru Stock Jrnl
+    *FLD_STKI_JRNL_VALUE_OUT, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Value depleted thru Stock Jrnl
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_MFG_VALUE_IN, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Value cumulated thru Mfg Jrnl
+    *FLD_STKI_MFG_VALUE_OUT, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Value depleted thru Mfg Jrnl
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_ADDL_PURC_VALUE_IN, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Addl. costs allocated during PURCHASE
+    *FLD_STKI_ADDL_JRNL_VALUE_IN, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Addl. costs allocated thru Stock Jrnl
+    *FLD_STKI_ADDL_MFG_VALUE_IN, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Addl. costs allocated thru MFG Jrnl
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_DISCOUNT_VALUE_OUT, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Discounts given during Sales  
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_TOTAL_ADDL_VALUE_IN, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Purchase value (nett of rejections)
+    *FLD_STKI_TOTAL_ADDL_VALUE_OUT, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Sale value (nett of rejections)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_STKI_COST_INFO,AGGR,,NULL,NULL,NULL,TRUE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // qualified by Stock Item
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+  *FLD_STKI_MTH_INFO, AGGR,1, NULL, NULL, NULL, TRUE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  qualified by JUL-MTH
+    *FLD_STKI_TOTAL_QTY_IN, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL Qty in (nett of rejections)
+    *FLD_STKI_TOTAL_QTY_OUT, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL Qty  out (nett of rejections)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_BILLED_QTY_IN, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Purchase (nett of Rejections)
+    *FLD_STKI_BILLED_QTY_OUT, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Sales (nett of Rejections)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_PURC_QTY_IN, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Purchase (nett of Rejections)
+    *FLD_STKI_SALE_QTY_OUT, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Sales (nett of Rejections)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_JRNL_QTY_IN, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Stock Jrnl transfers IN
+    *FLD_STKI_JRNL_QTY_OUT, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Stock Jrnl transfers OUT
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_MFG_QTY_IN, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Mfg Jrnl IN (Qty manufactured)
+    *FLD_STKI_MFG_QTY_OUT, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Mfg Jrnl OUT (Qty used for manufacture)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_PHYS_QTY_DIFF, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Diff in Phys Count for this mth
+    *FLD_STKI_PHYS_VAL_DIFF, AMT,2, NULL, NULL, NULL, FALSE, NULL                                                              ,,,,                                                                    ,,,,,,,,,,,,,,,,,,,,,,,, //  Diff in Phys Value for this mth (for non-unit based items)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_TOTAL_VALUE_IN, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Purchase value (nett of rejections)
+    *FLD_STKI_TOTAL_VALUE_OUT, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Sale value (nett of rejections)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_BILLED_VALUE_IN, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Purchase value (nett of rejections)
+    *FLD_STKI_BILLED_VALUE_OUT, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Sale value (nett of rejections)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_JRNL_VALUE_IN, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Value cumulated thru Stock Jrnl
+    *FLD_STKI_JRNL_VALUE_OUT, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Value depleted thru Stock Jrnl
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_MFG_VALUE_IN, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Value cumulated thru Mfg Jrnl
+    *FLD_STKI_MFG_VALUE_OUT, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Value depleted thru Mfg Jrnl
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_ADDL_PURC_VALUE_IN, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Addl. costs allocated during PURCHASE
+    *FLD_STKI_ADDL_JRNL_VALUE_IN, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Addl. costs allocated thru Stock Jrnl
+    *FLD_STKI_ADDL_MFG_VALUE_IN, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Addl. costs allocated thru MFG Jrnl
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_DISCOUNT_VALUE_OUT, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Discounts given during Sales  
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_TOTAL_ADDL_VALUE_IN, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Purchase value (nett of rejections)
+    *FLD_STKI_TOTAL_ADDL_VALUE_OUT, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  Sale value (nett of rejections)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; cumulates the values of JobWork order In values,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_STKI_JOBWORKIN_PARTY_INFO,AGGR,,NULL, NULL, NULL,TRUE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//qualified on the party record id
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_MTH_INFO, AGGR,1, NULL, NULL, NULL, TRUE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  qualified by JUL-MTH
+        *FLD_STKI_TOTAL_QTY_IN, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward quantity from Material trhasfer vouchers
+        *FLD_STKI_TOTAL_QTY_OUT, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward quantity from Material trhasfer vouchers
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        *FLD_STKI_TOTAL_VALUE_IN, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward value from Material trhasfer vouchers
+        *FLD_STKI_TOTAL_VALUE_OUT, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward value from Material trhasfer vouchers
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_STKI_MATTRANS_GDWN_INFO,AGGR,1,NULL,NULL,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//qualified on the godown record id
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+       *FLD_STKI_MTH_INFO, AGGR,2, NULL, NULL, NULL, TRUE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  qualified by JUL-MTH
+             *FLD_STKI_TOTAL_QTY_IN, QTY,3, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward quantity from Material trhasfer vouchers
+             *FLD_STKI_TOTAL_QTY_OUT, QTY,3, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward quantity from Material trhasfer vouchers
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+             *FLD_STKI_TOTAL_VALUE_IN, AMT,3, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward value from Material trhasfer vouchers
+             *FLD_STKI_TOTAL_VALUE_OUT, AMT,3, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward value from Material trhasfer vouchers
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+             *FLD_STKI_TOTAL_ADDL_VALUE_IN, AMT,3, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward value from Material trhasfer vouchers
+             *FLD_STKI_TOTAL_ADDL_VALUE_OUT, AMT,3, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward value from Material trhasfer vouchers
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; cumulates the values of JobWork order Out values,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_STKI_JOBWORKOUT_PARTY_INFO,AGGR,,NULL, NULL, NULL,TRUE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,// qualified on the party record id
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_MTH_INFO, AGGR,1, NULL, NULL, NULL, TRUE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  qualified by JUL-MTH
+        *FLD_STKI_TOTAL_QTY_IN, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward quantity from Material trhasfer vouchers
+        *FLD_STKI_TOTAL_QTY_OUT, QTY,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward quantity from Material trhasfer vouchers
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        *FLD_STKI_TOTAL_VALUE_IN, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward value from Material trhasfer vouchers
+        *FLD_STKI_TOTAL_VALUE_OUT, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward value from Material trhasfer vouchers
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        *FLD_STKI_TOTAL_ADDL_VALUE_IN, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward value from Material trhasfer vouchers
+        *FLD_STKI_TOTAL_ADDL_VALUE_OUT, AMT,2, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward value from Material trhasfer vouchers
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_STKI_MATTRANS_GDWN_INFO,AGGR,1,NULL,NULL,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//qualified on the godown record id
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+       *FLD_STKI_MTH_INFO, AGGR,2, NULL, NULL, NULL, TRUE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  qualified by JUL-MTH
+             *FLD_STKI_TOTAL_QTY_IN, QTY,3, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward quantity from Material trhasfer vouchers
+             *FLD_STKI_TOTAL_QTY_OUT, QTY,3, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward quantity from Material trhasfer vouchers
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+             *FLD_STKI_TOTAL_VALUE_IN, AMT,3, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward value from Material trhasfer vouchers
+             *FLD_STKI_TOTAL_VALUE_OUT, AMT,3, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward value from Material trhasfer vouchers
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+             *FLD_STKI_TOTAL_ADDL_VALUE_IN, AMT,3, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward value from Material trhasfer vouchers
+             *FLD_STKI_TOTAL_ADDL_VALUE_OUT, AMT,3, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, // TOTAL inward value from Material trhasfer vouchers
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+/******************** VCHTYPE Cumulations **************/,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+[!VCHTYPE],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_VTYP_MTH_INFO, AGGR,, NULL, NULL, NULL, TRUE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_VTYP_TURNOVER_CR_AMT, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_VTYP_TURNOVER_DR_AMT, AMT,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_VTYP_REGULAR_COUNT, LONG,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_VTYP_UNACC_COUNT, LONG,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_VTYP_CANCELLED_COUNT, LONG,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_VTYP_OPTIONAL_COUNT, LONG,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_VTYP_PROVISIONAL_COUNT, LONG,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_VTYP_PROV_CANCELLED_COUNT, LONG,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_VTYP_PROV_OPTIONAL_COUNT, LONG,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_VTYP_NULLTRANS_COUNT, LONG,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+[!DATA ENTRY AIDS]    // data-entry aids,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; FLD Name, Type,Level, RF Name, TDL Name, Default Value, Repeated, Object Name,MST OBJ Name, IsUnique, UniqueRF, SchemaInEditModeOnly,,,,,,,,COMMENTS (must start with //),,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_MST_DATA_ENTRY, AGGR,, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,                                                  
+    FLD_MST_CONTRA_CONTRA, MSTID,1, RF_CONTRA_CONTRA,ContraContra, NULL, FALSE,NULL, OBJ_LEDGER,,,,,,,,,,,,,,,,,,,,,,,,,,, 
+    FLD_MST_PYMT_CONTRA, MSTID,1, RF_PYMT_CONTRA,PaymentContra, NULL, FALSE,NULL, OBJ_LEDGER,,,,,,,,,,,,,,,,,,,,,,,,,,,                                  
+    FLD_MST_RCPT_CONTRA, MSTID,1, RF_RCPT_CONTRA,ReceiptContra, NULL, FALSE,NULL, OBJ_LEDGER,,,,,,,,,,,,,,,,,,,,,,,,,,,                                  
+    FLD_MST_JRNL_CONTRA, MSTID,1, RF_JRNL_CONTRA,JournalContra, NULL, FALSE,NULL, OBJ_LEDGER,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_MST_CNOTE_CONTRA, MSTID,1, RF_CNOTE_CONTRA,CNoteContra, NULL, FALSE,NULL, OBJ_LEDGER,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_MST_DNOTE_CONTRA, MSTID,1, RF_DNOTE_CONTRA,DNoteContra, NULL, FALSE,NULL, OBJ_LEDGER,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_MST_SALES_CONTRA, MSTID,1, RF_SALES_CONTRA,SalesContra, NULL, FALSE,NULL, OBJ_LEDGER,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_MST_PURC_CONTRA, MSTID,1, RF_PURC_CONTRA,PurchaseContra, NULL, FALSE,NULL, OBJ_LEDGER,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_MST_INCOME_CC, MSTID,1, RF_CREDIT_CC,CreditCstCtr, NULL, FALSE,NULL, OBJ_CSTCTR,,,,,,,,,,,,,,,,,,,,,,,,,,,                                     
+    FLD_MST_EXPENSE_CC, MSTID,1, RF_DEBIT_CC,DebitCstCtr, NULL, FALSE,NULL, OBJ_CSTCTR,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_MST_PURCHASE_ITEM, MSTID,1, RF_PREV_PURCHASE,PreviousPurchase, NULL, FALSE,NULL, OBJ_STKITEM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_MST_SALES_ITEM, MSTID,1, RF_PREV_SALES,PreviousSales, NULL, FALSE,NULL, OBJ_STKITEM,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_MST_ITEM_GODOWN, MSTID,1, RF_PREV_GODOWN,PreviousGodown, NULL, FALSE,NULL, OBJ_GODOWN,,,,,,,,,,,,,,,,,,,,,,,,,,,                                  
+    FLD_MST_PREV_NARRATION, STR,1, RF_PREV_NARRATION, Prev Narration, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_MST_PREVIOUS_CREDIT, STR,1, RF_BILL_CREDIT_PERIOD, Bill Credit Period, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    FLD_MST_PREV_NUMBER, STR,1, RF_LAST_NUMBER,LastNumber, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,                                    
+    FLD_MST_PREV_RATE, RATE,1, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,                                               
+    FLD_MST_TU_WISE_DTAILS,AGGR,1,RF_LED_TINWISE_DETAILS,LedTinwiseDetails,NULL,TRUE,OBJ_TU_WISE_DETAILS,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_GRP_LED_ATTRIBUTES, AGGR,, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,// to aid in data entry ... a copy of the last ledger attributes .. same fields as FLD_LED_BEHAVIOUR
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_STKG_STKI_ATTRIBUTES, AGGR,, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+/**************** Rapid access to core info ********************/, // prevents need to 'walk' the VchEntry unless absolutely necessary,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+[!VOUCHER ],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_VCH_MST_ONACCOUNT_AMT, AMT,, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, //  Qualified on Master ID
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_VCH_STKI_MOVING_QTY, QTY,, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_VCH_STKI_MOVING_AMT, AMT,, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+[TU_WISE_DETAILS],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*NULL,MSTID,,RF_TAX_UNIT,TaxUnit,NULL,FALSE,NULL,OBJ_TAX_UNIT,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_TUW_ADDR_DETAILS,AGGR,,RF_ADDR_DETAILS,Addr Details,NULL,TRUE,OBJ_ADDR_WISE_DETAILS,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+[ADDR_WISE_DETAILS],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_TINWISE_ADDR_TYPE,STR,,RF_ADDR_TYPE,AddrType,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_TINWISE_DISTANCE,NUM,,RF_DISTANCE,Distance,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,

@@ -1,0 +1,28 @@
+;; Sri Ganeshji : Sri Balaji : Sri Pitreshwarji : Sri Durgaji : Sri Venkateshwara,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; Section/Object,SDFId of Object,IsPrimary,IsRecursive,HasMstTree,HasValidFunc,HasPrepareFunc,RF Required 1,RF Required 2,Is OR Test,HasSplitFunc,HasIsEmptyFunc,ObjNameRF,Section Close,,,COMMENTS (must start with //),,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; FLD Name, Type,Level, RF Name, TDL Name, Default Value, Repeated, Object Name,MST OBJ Name, IsUnique, UniqueRF for Aggr / BaseDate For DateRange, SchemaInEditModeOnly,IsInherited,IsCacheRequired,SourceCollection,IsSysNameIsString,Required For Remoting,NatLang Accessible,NatLang Aliases,FromDateParmApplicable,ToDateParmApplicable,ValMethodParmApplicable,ScenarioParmApplicable,ObjIdentiferParm,View,IsConsumable,Read/Write,IsInitiallyGathered,IsEncrypted,IsExportable,RFSrcType,RFSrcTdlExp,RegeneratesObj,DependencyType,Is Status Type,Dependency,COMMENTS(muststartwith//)
+;;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; Subrecord for handling excise details of company,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+[!CMP_EXCISE:CompanyExcise],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*FLD_CMP_SUB_REC_ID,LONG,,RF_CMP_SUB_REC_ID,NULL,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+[!+50],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;;Content starts from here,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPE_ASSESSEE_TYPE, STR,, RF_EXCISE_ASSESSEE_TYPE, Excise Assessee Type, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // Assessee Type
+FLD_CMPE_COMMISSIONRTE, STR,, RF_EXCISE_COMMISSIONRTE, Excise Commissionerate, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // Commissionerate
+FLD_CMPE_RANGE_CODE, STR,, RF_EXCISE_RANGE_CODE, Excise Range Code, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // Range Code
+FLD_CMPE_DIVISION_CODE, STR,, RF_EXCISE_DIVISION_CODE, Excise Division Code, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // Division Code
+FLD_CMPE_FOCAL_BANK_CODE, STR,, RF_EXCISE_FOCAL_BANK_CODE, Excise Focal Bank Code, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // Focal Bank Code
+FLD_CMPE_FOCAL_BANK_NAME, STR,, RF_EXCISE_FOCAL_BANK_NAME, Excise Focal Bank Name, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // Focal Bank Name
+FLD_CMPE_FOCAL_BANK_ADDR, STR,, RF_EXCISE_FOCAL_BANK_ADDR, Excise Focal Bank Addr, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,        // Focal Bank Address    
+FLD_CMPE_CLASSIFICATION_ON,BOOL,,RF_IS_EXCISE_CLASSIFICATION_ON,IsExciseClassificationOn, NULL, FALSE, NULL ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPE_DEACTIVATE_FROM,DATE,,RF_EXCISE_DEACTIVATE_FROM,DeactivateExciseFrom,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPE_REGN, STR,, RF_EXCISE_REGN, ExciseRegn, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPE_RANGE, STR,, RF_EXCISE_RANGE, ExciseRange, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPE_RANGE_ADDR, STR,, RF_EXCISE_RANGE_ADDR, ExciseRangeAddress, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPE_DIV, STR,, RF_EXCISE_DIV, ExciseDivision, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPE_DIV_ADDR, STR,, RF_EXCISE_DIV_ADDR, ExciseDivisionAddress, NULL, FALSE, NULL ,, , , ,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CMPE_IEC_CODE,STR,,RF_IEC_CODE,CMPIECCode,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

@@ -1,0 +1,276 @@
+;;,,,,,,,,,,,,,,,,,
+;;Section/Object,ObjName,,SDFId of Object ,IsPrimary,IsRecursive,HasMstTree,HasValidFunc,HasPrepareFunc,RF Required 1,RF Required 2,Is OR Test,HasSplitFunc,HasIsEmptyFunc,ObjNameRF, Section Close,,COMMENTS (must start with //)
+;; FLD Name, Type,Level, RF Name, TDL Name, Default Value, Repeated, Object Name,MST OBJ Name, IsUnique, UniqueRF for Aggr / BaseDate For DateRange, SchemaInEditModeOnly,,IsInherited,IsCacheRequired,SourceCollection,IsSysNameIsString,COMMENTS (must start with //)
+;;---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+[*SCRATCH],,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+FLD_SCR_BATCH_TOTAL_QTY, QTY,,,,,,,,,,,,,,,,//!   scratch qty. for totals
+FLD_SCR_BATCH_TOTAL_VALUE,AMT,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+FLD_SCR_TURNOVER_DR_AMT, AMT,,,,,,,,,,,,,,,,//!  scratch amt. for turnover details for Sales/Purchase
+FLD_SCR_TURNOVER_CR_AMT, AMT,,,,,,,,,,,,,,,,//!  scratch amt. for turnover details for Sales/Purchase
+FLD_SCR_QTY, QTY,,,,,,,,,,,,,,,,//!   scratch qty. (used during Totalling issues)
+FLD_SCR_VALUE, AMT,,,,,,,,,,,,,,,,//!   scratch amt.
+,,,,,,,,,,,,,,,,,
+[*VARFILE ],,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+FLD_VAR_AGGR, AGGR,,,,,,,,,,,,,,,,
+    FLD_VAR_NAME, STR,1,,,,,,,,,,,,,,,
+    FLD_VAR_VALUE, STR,1,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+[*TDLFILE ],,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+FLD_TDL_STREAM, STR,,,,,,,,,,,,,,,,
+FLD_TDL_TARGET, AGGR,,,,,,,,,,,,,,,,// 0 or N.  0 implies 'Universal'.
+    FLD_TDL_TARGET_LOW, LONG,1,,,,,,,,,,,,,,,
+    FLD_TDL_TARGET_HIGH, LONG,1,,,,,,,,,,,,,,,
+FLD_TDL_AUTHOR, AGGR,,,,,,,,,,,,,,,,
+    FLD_TDL_AUTHOR_LOW, LONG,1,,,,,,,,,,,,,,,
+    FLD_TDL_AUTHOR_HIGH, LONG,1,,,,,,,,,,,,,,,
+    FLD_TDL_AUTHOR_NAME, STR,1,,,,,,,,,,,,,,,
+FLD_TDL_PRODUCT, AGGR,,,,,,,,,,,,,,,,
+    FLD_TDL_PRODUCT_DESC, STR,1,,,,,,,,,,,,,,,
+    FLD_TDL_PRODUCT_GUID, STR,1,,,,,,,,,,,,,,,
+FLD_TDL_UNIVERSAL, BOOL,,,,,,,,,,,,,,,,
+FLD_TDL_VERSION, LONG,,,,,,,,,,,,,,,,
+FLD_TDL_INCLUDE_FILE,STR,,,,,,,,,,,,,,,,// Name of the Included File
+,,,,,,,,,,,,,,,,,
+[*LANGFILE],,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+FLD_LANGUAGE_ID, LONG,,,,,,,,,,,,,,,,// Id Of the Language
+FLD_LANGUAGE_PRIORITY, LONG,,,,,,,,,,,,,,,,// Priority Of the Language
+FLD_DCT_VERSION,LONG,,,,,,,,,,,,,,,,//DCT Version
+,,,,,,,,,,,,,,,,,
+FLD_DCT_STRINGS, AGGR,,,,,,,,,,,,,,,,
+    FLD_DCT_BASE_STR, STR,1,,,,,,,,,,,,,,,// BASE (English-US) String
+    FLD_DCT_LOCALE_STR, STR,1,,,,,,,,,,,,,,,// Corresponding Localized String.
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+[*LICFILE],,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+FLD_LIC_PROTECTION_TYPE,LONG,,,,,,,,,,,,,,,,"// type of protection (rental ,  cpu ,  phone etc..)"
+FLD_LIC_STATUS_CODE,LONG,,,,,,,,,,,,,,,,"// Current status of license (blocked ,  cancelled etc.)"
+FLD_LIC_VER,LONG,,,,,,,,,,,,,,,,// Current version of license file
+,,,,,,,,,,,,,,,,,
+FLD_LIC_CUST_DETAILS, AGGR,,,,,,,,,,,,,,,,
+    FLD_LIC_SERIAL, LONG,1,,,,,,,,,,,,,,,// Serial number
+    FLD_LIC_PRODUCT_TYPE, LONG,1,,,,,,,,,,,,,,,"// product type ( gold ,  silver ,  diamond)"
+    FLD_LIC_COUNTRY, LONG,1,,,,,,,,,,,,,,,// contry issued ( 91 or 01)
+    FLD_LIC_MAJOR_VERSION, LONG,1,,,,,,,,,,,,,,,"// major version,  say 6"
+    FLD_LIC_MINOR_VERSION, LONG,1,,,,,,,,,,,,,,,"// major version ,  say 3"
+    FLD_LIC_MAJOR_RELEASE, LONG,1,,,,,,,,,,,,,,,"// major release ,  say 2"
+    FLD_LIC_MINOR_RELEASE, LONG,1,,,,,,,,,,,,,,,"// minor release ,  say 1"
+    FLD_LIC_FOR_SERIAL, LONG,1,,,,,,,,,,,,,,,// Old Serial number for BSS
+,,,,,,,,,,,,,,,,,
+FLD_LIC_DETAILS, AGGR,,,,,,,,,,,,,,,,
+    FLD_LIC_ISSUE_DATE,DATE,1,,,,,,,,,,,,,,,// licence issued date and time
+    FLD_LIC_END_DATE,DATE,1,,,,,,,,,,,,,,,// license expiration date and time
+    FLD_LIC_SERVER_ID, LONG,1,,,,,,,,,,,,,,,// server id
+    FLD_LIC_SITE_ID, LONG,1,,,,,,,,,,,,,,,// site id
+    FLD_LIC_FINGERPRINT, STR,1,,,,,,,,,,,,,,,// customer fingerprint
+    FLD_LIC_TALLY_TOKEN, STR,1,,,,,,,,,,,,,,,// tally generated token
+    FLD_LIC_SOURCE, STR,1,,,,,,,,,,,,,,,// not used in lic file but in offline req file
+    FLD_LIC_REQ_TYPE, STR,1,,,,,,,,,,,,,,,// not used in lic file but in offline req file
+    FLD_LIC_PLATFORM, STR,1,,,,,,,,,,,,,,,// not used in lic file but in offline req file
+    FLD_LIC_ACTIVATION_CODE, STR,1,,,,,,,,,,,,,,,// not used in lic file but in offline req file
+    FLD_LIC_EMAIL, STR,1,,,,,,,,,,,,,,,// not used in lic file but in offline req file
+    FLD_LIC_BUILD_NUM, LONG,1,,,,,,,,,,,,,,,// not used in lic file but in offline req file
+    FLD_LIC_USER_NAME, STR,1,,,,,,,,,,,,,,,// not used in lic file but in offline req file
+    FLD_LIC_HOST_NAME, STR,1,,,,,,,,,,,,,,,// not used in lic file but in offline req file
+    FLD_LIC_LIC_PATH, STR,1,,,,,,,,,,,,,,,// not used in lic file but in offline req file
+    FLD_LIC_NUMBER_OF_LIC, LONG,1,,,,,,,,,,,,,,,// Number of licenses
+    FLD_LIC_FOR_FINGERPRINT, STR,1,,,,,,,,,,,,,,,// not used in lic file but in offline req file
+    FLD_LIC_OS, STR,1,,,,,,,,,,,,,,,// not used in lic file but in offline req file
+    FLD_LIC_ISREGISTERED, BOOL,1,,,,,,,,,,,,,,,//Whether the user is registered or not
+    FLD_LIC_AMC_EXP_DATE,DATE,1,,,,,,,,,,,,,,,//product expiration date and time
+    FLD_LIC_BUILD_ID, STR,1,,,,,,,,,,,,,,,// not used in lic file but in offline req file (new build no)
+    FLD_LIC_CURRENT_UI_LANG,LONG,1,,,,,,,,,,,,,,,// not used in lic file but in offline req file (currrent selected UI Language)
+    FLD_LIC_EVAL_LICENSE,BOOL,1,,,,,,,,,,,,,,,// Whether evaluation license or not
+,,,,,,,,,,,,,,,,,
+FLD_LIC_FEATURE_LIST, AGGR,,,,,,,,,,,,,,,,// feature sets
+    FLD_LIC_FEATURE, AGGR,1,,,,,,,,,,,,,,,
+        FLD_LIC_FEATURE_CODE , LONG,2,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+FLD_LIC_CAPSULE_LIST, AGGR,,,,,,,,,,,,,,,,// List of capsules
+    FLD_LIC_CAPSULE, AGGR,1,,,,,,,,,,,,,,,
+        FLD_LIC_CAPSULE_GUID, STR,2,,,,,,,,,,,,,,,// GUID of the product.
+,,,,,,,,,,,,,,,,,
+FLD_LIC_ADDON_LIST, AGGR,,,,,,,,,,,,,,,,// List of Addons
+    FLD_LIC_ADDON, AGGR,1,,,,,,,,,,,,,,,
+        FLD_LIC_ADDON_GUID, STR,2,,,,,,,,,,,,,,,// GUID of the Addon
+        FLD_LIC_ADDON_NAME, STR,2,,,,,,,,,,,,,,,// Name of the Addon
+        FLD_LIC_ADDON_AMC_EXP_DT,DATE,2,,,,,,,,,,,,,,,// AMC Expiry date of the Addon
+        FLD_LIC_ADDON_DISPLAY_DT,DATE,2,,,,,,,,,,,,,,,// Display date of the Addon
+,,,,,,,,,,,,,,,,,
+FLD_LIC_USERINFO, AGGR,,,,,,,,,,,,,,,,
+    FLD_LIC_NUM_PROCESSOR,LONG,1,,,,,,,,,,,,,,,// Number of processors
+    FLD_LIC_PROCESSOR_TYPE,LONG,1,,,,,,,,,,,,,,,// Processor Type
+    FLD_LIC_PROCESSOR_LEVEL, LONG,1,,,,,,,,,,,,,,,// Processor Level
+    FLD_LIC_PROCESSOR_SPEED, LONG,1,,,,,,,,,,,,,,,// Processor Speed
+    FLD_LIC_VENDOR_DATA, STR,1,,,,,,,,,,,,,,,// Vendor Data
+    FLD_LIC_VOL_SERIALS, STR,1,,,,,,,,,,,,,,,// Volume serials
+    FLD_LIC_RAM_SIZE, LONG,1,,,,,,,,,,,,,,,// RAM Size
+    FLD_LIC_HDD_SIZE, LONG,1,,,,,,,,,,,,,,,// HDD Size
+    FLD_LIC_CMP_NAME, STR,1,,,,,,,,,,,,,,,// Company Name
+    FLD_LIC_OWNER_NAME, STR,1,,,,,,,,,,,,,,,// Owner Name
+    FLD_LIC_PROD_ID, STR,1,,,,,,,,,,,,,,,// Win Product Id
+    FLD_LIC_MAC_ADDR, STR,1,,,,,,,,,,,,,,,// MAC Addresses
+    FLD_LIC_OEM_ID, LONG,1,,,,,,,,,,,,,,,// OEM_ID
+    FLD_LIC_HDD_SERIAL, STR,1,,,,,,,,,,,,,,,// Hard Disk Serial
+    FLD_LIC_WIN_DIR_TIMESTAMPS, STR,1,,,,,,,,,,,,,,,// Win Dir Time Stamps
+,,,,,,,,,,,,,,,,,
+FLD_LIC_CURR_DATE,LONG,,,,,,,,,,,,,,,,// Current Date maintained by licensefile
+FLD_LIC_FILE_DATE_HIGH,LONG,,,,,,,,,,,,,,,,// License file creation date high
+FLD_LIC_FILE_DATE_LOW,LONG,,,,,,,,,,,,,,,,// License file creation date low
+FLD_LIC_EXEC_COUNT,LONG,,,,,,,,,,,,,,,,// Execution count per day
+,,,,,,,,,,,,,,,,,
+[*STATFILE],,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+FLD_STAT_VERSION, LONG,,,,,,,,,,,,,,,,// Unique version of STAT file.
+FLD_STAT_DATA_REC_END,LONG,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+FLD_STAT_MIN_TALLY_VERSION, AGGR,,,,,,,,,,,,,,,,// ## 1
+    FLD_STAT_MAJOR_VERSION, LONG,1,,,,,,,,,,,,,,,// Minimum Tally Major Version required for import this STAT file.
+    FLD_STAT_MINOR_VERSION, LONG,1,,,,,,,,,,,,,,,// Minimum Tally Minor version required for import this STAT file.
+    FLD_STAT_MAJOR_RELEASE, LONG,1,,,,,,,,,,,,,,,// Minimum Tally Major Release required for import this STAT file.
+    FLD_STAT_MINOR_RELEASE, LONG,1,,,,,,,,,,,,,,,// Minimum Tally Major Release required for import this STAT file.
+,,,,,,,,,,,,,,,,,
+FLD_STAT_TDL, AGGR,1,,,,,,,,,,,,,,,// 1 TO N each STAT TDL file specified in INI file.
+    FLD_STAT_TDL_NAME, STR,2,,,,,,,,,,,,,,,// Name of STAT TDL file.
+    FLD_STAT_TDL_CODE,BINARY,2,,,,,,,,,,,,,,,// Contains TDL Code in the file specified by FLD_STAT_TDL_NAME.
+    FLD_STAT_TDL_CODE_LEN,LONG,,,,,,,,,,,,,,,,
+FLD_STAT_CREATE_DATE,LONG,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+[*DEFTDLDATFILE],,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+FLD_DEF_FILE_NAME, STR,,,,,,,,,,,,,,,,
+FLD_DEF_FILE_CONTENTS, STR,,,,,,,,,,,,,,,,
+FLD_DEF_MAJOR_VERSION, LONG,,,,,,,,,,,,,,,,
+FLD_DEF_MINOR_VERSION, LONG,,,,,,,,,,,,,,,,
+FLD_DEF_MAJOR_RELEASE, LONG,,,,,,,,,,,,,,,,
+FLD_DEF_MINOR_RELEASE, LONG,,,,,,,,,,,,,,,,
+FLD_DEF_FAMILY_GUID,STR,,,,,,,,,,,,,,,,
+FLD_DEF_RELEASE_DATE,LONG,,,,,,,,,,,,,,,,
+;,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+[*ROLLBACKFILE],,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+FLD_RB_FILE_NAME, STR,,,,,,,,,,,,,,,,
+FLD_RB_CMP_GUID, STR,,,,,,,,,,,,,,,,
+FLD_RB_FILE_NDX, LONG,,,,,,,,,,,,,,,,// Used by TDAS
+FLD_RB_FILE_HEADER, BINARY,,,,,,,,,,,,,,,,
+FLD_RB_FSTYPE, LONG,,,,,,,,,,,,,,,,// PD-6061 
+FLD_RB_LIC_REC, BINARY,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+FLD_RB_RECPART, AGGR,,,,,,,,,,,,,,,,
+    FLD_RB_OFFSET, LONG,1,,,,,,,,,,,,,,,
+    FLD_RB_DATA, BINARY,1,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+[*MESSAGE],,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+MSG_MESSAGE, AGGR,,,,,,,,,,,,,,,,
+    MSG_ACTION, LONG,1,,,,,,,,,,,,,,,
+    MSG_TYPE, LONG,1,,,,,,,,,,,,,,,
+    MSG_ID, LONG,1,,,,,,,,,,,,,,,
+    MSG_INFO, AGGR,1,,,,,,,,,,,,,,,
+        MSG_MAIN_INFO,AGGR,2,,,,,,,,,,,,,,,
+MSG_DEPID_PINFO,AGGR,3,,,,,,,,,,,,,,,
+MSG_DEPID_PDATA,LONG,4,,,,,,,,,,,,,,,
+MSG_CONTRI_INFO,AGGR,3,,,,,,,,,,,,,,,
+MSG_DATA_INFO,AGGR,3,,,,,,,,,,,,,,,
+        MSG_PURPOSE_INFO,AGGR,2,,,,,,,,,,,,,,,
+            MSG_STAT_INFO,AGGR,3,,,,,,,,,,,,,,,
+                MSG_PURPOSE_UPDATE_TYPE,SYSID,4,,,,,,,,,,,,,,,
+                MSG_STAT_KEY,STR,4,,,,,,,,,,,,,,,
+                MSG_OLD_STAT_KEY,STR,4,,,,,,,,,,,,,,,
+                MSG_STAT_ID,LONG,4,,,,,,,,,,,,,,,
+                MSG_DO_MERGE,BOOL ,4,,,,,,,,,,,,,,,
+                MSG_CONTENT_INFO,AGGR,4,,,,,,,,,,,,,,,
+                    MSG_CONTENT_QUALIFIER,SYSID,5,,,,,,,,,,,,,,,
+                    MSG_VERSION_INFO,AGGR,5,,,,,,,,,,,,,,,
+                        MSG_LAST_VER_ID,LONG,6,,,,,,,,,,,,,,,
+                        MSG_PERSIST_AS_IS,BOOL ,6,,,,,,,,,,,,,,,
+                        MSG_CONTRI_VER_ID,LONG,6,,,,,,,,,,,,,,,
+                        MSG_NUM_CONTRIS ,LONG,6,,,,,,,,,,,,,,,
+                        MSG_CONTRIBUTOR_INFO ,AGGR,6,,,,,,,,,,,,,,,
+        MSG_DEP_INFO_MSG,AGGR,2,,,,,,,,,,,,,,,
+            MSG_DATA_DB_FILE_TYPE,LONG,3,,,,,,,,,,,,,,,
+            MSG_DATA_DEPDATA,AGGR,3,,,,,,,,,,,,,,,
+       MSG_UPDT_INFO,AGGR,2,,,,,,,,,,,,,,,
+            MSG_UPDT_MST_ID,LONG,3,,,,,,,,,,,,,,,
+            MSG_UPDT_NO_AGGR_VCH_INFO,AGGR,3,,,,,,,,,,,,,,,
+                       MSG_UPDT_VCH_ID,LONG,4,,,,,,,,,,,,,,,
+                       MSG_UPDT_VCH_DATE,DATE,4,,,,,,,,,,,,,,,
+            MSG_UPDT_KEY_INFO,AGGR,3,,,,,,,,,,,,,,,
+                       MSG_UPDT_KEY_STR,STR,4,,,,,,,,,,,,,,,
+            MSG_UPDT_DEP_VCH_ID,LONG,3,,,,,,,,,,,,,,,
+    MSG_DIRECT, BOOL,1,,,,,,,,,,,,,,,
+    MSG_VCHKEY,LONG64,1,,,,,,,,,,,,,,,
+    MSG_PREV_VCHTYPE,MSTID,1,,,,,,,,,,,,,,,
+    MSG_PREV_VCH_NUMBER,STR,1,,,,,,,,,,,,,,,
+    MSG_PREV_SERIAL_MST,MSTID,1,,,,,,,,,,,,,,,
+    MSG_PREV_SERIAL_NUMBER,STR,1,,,,,,,,,,,,,,,
+    MSG_PREV_ARE_SR_MST,MSTID,1,,,,,,,,,,,,,,,
+    MSG_PREV_ARE_SR_NUM,STR,1,,,,,,,,,,,,,,,
+    MSG_INTENT, LONG,1,,,,,,,,,,,,,,,
+    MSG_TASK, LONG,1,,,,,,,,,,,,,,,
+    MSG_UPDATE_TYPE,SYSID,1,,,,,,,,,,,,,,,
+    MSG_SUB_ACTION_TYPE,SYSID,1,,,,,,,,,,,,,,,
+    MSG_RECOMPUTE_NOT_REQ,BOOL ,1,,,,,,,,,,,,,,,
+    MSG_DONT_CARRY_OBJ,BOOL ,1,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+[*LANGARRAYFILE],,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+FLD_LANGFILE_VERSION,LONG,,,,,,,,,,,,,,,,
+FLD_LANGUAGE_ARRAY,AGGR,,,,,,,,,,,,,,,,
+    FLD_LANGARRAY_LANG_ID,LONG,1,,,,,,,,,,,,,,,
+    FLD_LANGARRAY_LANG_NAME,STR,1,,,,,,,,,,,,,,,
+    FLD_LANGARRAY_BASE_LANG_NAME,STR,1,,,,,,,,,,,,,,,
+    FLD_LANGARRAY_PARENT_LANG_ID,LONG,1,,,,,,,,,,,,,,,
+    FLD_LANGARRAY_LANG_GROUP,LONG,1,,,,,,,,,,,,,,,
+    FLD_LANGARRAY_START_CODE_POINT,LONG,1,,,,,,,,,,,,,,,
+    FLD_LANGARRAY_END_CODE_POINT,LONG,1,,,,,,,,,,,,,,,
+    FLD_LANGARRAY_DEF_FACE_NAME,STR,1,,,,,,,,,,,,,,,
+    FLD_LANGARRAY_HEIGHT_DIFFERENCE,LONG,1,,,,,,,,,,,,,,,
+    FLD_LANGARRAY_IGNORE_IL,BOOL,1,,,,,,,,,,,,,,,
+    FLD_LANGARRAY_SCRIPT_ID,LONG,1,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+[*PURPOSEVERSIONDATA],,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+FLD_PURPOSE_PV_METADATA,AGGR,,,,,,,,,,,,,,,,
+FLD_DUMMY_PV_AGGR_1,AGGR,1,,,,,,,,,,,,,,,// To account for recursive nature of pv meta data
+FLD_DUMMY_PV_AGGR_2,AGGR,1,,,,,,,,,,,,,,,// To account for recursive nature of pv meta data
+    FLD_PV_MAX_COUNT,LONG,1,,,,,,,,,,,,,,,
+    FLD_PV_VERSION_AGGR,AGGR,1,,,,,,,,,,,,,,,
+        FLD_PV_VERSION_OFFSET,LONG,2,,,,,,,,,,,,,,,
+        FLD_PV_VERSION_LINKS_AGGR,AGGR,2,,,,,,,,,,,,,,,
+            FLD_PV_VERSION_LINKS,AGGR,3,,,,,,,,,,,,,,,
+                FLD_PV_LINK_REC_ID,LONG,4,,,,,,,,,,,,,,,
+                FLD_PV_LINK_VER_ID,LONG,4,,,,,,,,,,,,,,,
+                FLD_PV_CONTENT_LINKS,AGGR,4,,,,,,,,,,,,,,,
+                    FLD_PV_CONTENT_VER_ID,LONG,5,,,,,,,,,,,,,,,
+                    FLD_PV_CONTENT_QUALIFIER,SYSID,5,,,,,,,,,,,,,,,
+FLD_PURPOSE_ID,LONG,,,,,,,,,,,,,,,,
+FLD_PURPOSE_STAT_KEY,STR,,,,,,,,,,,,,,,,
+FLD_PURPOSE_STAT_QUALIFIER,SYSID,,,,,,,,,,,,,,,,
+FLD_PURPOSE_DOC_NUM,STR,,,,,,,,,,,,,,,,
+FLD_PURPOSE_REF_NUM,STR,,,,,,,,,,,,,,,,
+FLD_PURPOSE_STAT_MAX_DATE,DATE,,,,,,,,,,,,,,,,
+FLD_PURPOSE_MERGED_STAT,BOOL,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+[*PURPOSECONTRIBUTORDATA],,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+FLD_PURPOSE_CONTRIBUTOR,AGGR,,NULL,NULL,NULL,FALSE,NULL,,,,,,,,,,
+    FLD_PURPOSE_DELETED,BOOL,1,NULL,NULL,NULL,FALSE,NULL,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+[*UPDATEFILEUSERHEADER],,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,
+FLD_UPD_USR_HDR_RECPART, AGGR,,,,,,,,,,,,,,,,
+   FLD_UPD_USR_HDR_FILE_NDX, LONG,1,,,,,,,,,,,,,,,
+   FLD_UPD_USR_HDR_DATA, BINARY,1,,,,,,,,,,,,,,,
+   FLD_UPD_USR_HDR_INFO_SIZE, LONG,1,,,,,,,,,,,,,,,
+   FLD_UPD_USR_HDR_LIC_DATA, BINARY,1,,,,,,,,,,,,,,,
+   FLD_UPD_USR_HDR_LIC_SIZE, LONG,1,,,,,,,,,,,,,,,
+   FLD_UPD_USR_HDR_FS_TYPE, LONG,1,,,,,,,,,,,,,,,

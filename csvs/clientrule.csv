@@ -1,0 +1,163 @@
+;; Sri Ganeshji : Sri Balaji : Sri Pitreshwarji : Sri Durgaji : Sri Venkateshwara ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; Section/Object ,SDFId of Object,IsPrimary,IsRecursive,HasMstTree,HasValidFunc,HasPrepareFunc,RF Required 1,RF Required 2,Is OR Test,HasSplitFunc,HasIsEmptyFunc,ObjNameRF,Section Close,,,COMMENTS (must start with //),,,,,,,,,,,,,,,,,,,
+[!CLIENTRULE],,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; Common FLD's which are used by other masters also,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; FLD Name, Type,Level, RF Name, TDL Name, Default Value, Repeated, Object Name,MST OBJ Name, IsUnique, UniqueRF for Aggr / BaseDate For DateRange, SchemaInEditModeOnly,IsInherited,IsCacheRequired,SourceCollection,IsSysNameIsString,Required For Remoting,NatLang Accessible,NatLang Aliases,FromDateParmApplicable,ToDateParmApplicable,ValMethodParmApplicable,ScenarioParmApplicable,ObjIdentiferParm,View,IsConsumable,Read/Write,IsInitiallyGathered,IsEncrypted,IsExportable,RFSrcType,RFSrcTdlExp,RegeneratesObj,DependencyType,Is Status Type,COMMENTS(muststartwith//)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*FLD_MST_TYPE, LONG,, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  of type OBJ_xxx (see appenum.h)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*FLD_MST_LANGUAGE, AGGR,, RF_LANG_NAME, Language Name, NULL, TRUE, OBJ_LANG_NAME,, TRUE, RF_NAME ,                       ,,,,,,,,,,,,,,,,,,,,,,,, //  0 N: Language Names
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*NULL ,         STR ,,RF_NAME,Name,NULL,TRUE,NULL,,,,,,,RF_LANG_NAME,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*FLD_MST_NARRATION,STR,,RF_NARRATION,Narration, NULL, FALSE, NULL ,,,,,,,,,,,,,,,,,,,,,,,,,,,,     //  User-defined notes against group
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*FLD_MST_SORT_POSITION, LONG,, RF_SORT_POSITION, Sort Position, STD_LED_SORT_POS, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,     //  Generic sort position.
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*FLD_MST_RESV_ID, LONG,, NULL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,, //  If an internal TALLY Account what is its number (enum based)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*FLD_MST_ACTIVE_DATE,DATE,, RF_ACTIVE_DATE, Active From, NULL, FALSE, NULL,, , , ,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*FLD_MST_DEACTIVE_DATE,DATE,, RF_DEACTIVE_DATE, Active To, NULL, FALSE, NULL,, , , ,,,,,,,,,,,,,,,,,,,,,,,,
+*FLD_MST_ALTMSTID,LONG,, RF_SYNCALTER_ID, SyncAlterID,0, FALSE, NULL,,,,,,,,,,,,,,,,,,,READ,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; FLD's which are specific to Client Rule master                                                                                         ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_IS_ACTIVE, BOOL,, RF_IS_ACTIVE, IsActive, TV_FALSE, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                                                     
+FLD_CLR_ALTER_ID, BOOL,, RF_ALTER_ID, AlterID, TV_TRUE, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                                                        
+FLD_CLR_SOURCE_URL, STR,, RF_SOURCE_URL, NULL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,                                                                                    
+FLD_CLR_REMOTE_GUID,STR,, RF_REMOTE_GUID, RemoteGUID, NULL, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                                        
+FLD_CLR_REMOTE_CMPNAME, STR,, RF_REMOTE_CMPNAME, RemoteCompanyName, NULL, FALSE, NULL ,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                             
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_CLIENT_LAST_SENT_TID, LONG,, RF_LAST_SENT_TID, LastSentTID, NULL, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                             
+FLD_CLR_LOOP_COLLECTION, STR,, RF_LOOP_COLLECTION, LoopCollection, NULL, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                               
+FLD_CLR_LOOP_ERROR, STR,, RF_LOOP_ERROR, LoopError, NULL, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                                              
+FLD_CLR_UPLOAD_REPORT, STR,, RF_UPLOAD_REPORT, UploadReportName, NULL, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                                 
+FLD_CLR_UPDATE_RESPONSE, STR,, RF_UPDATE_RESPONSE, UpdateResponseName, NULL, FALSE, NULL ,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                          
+FLD_CLR_UPDATE_TRIGGER, STR,, RF_UPDATE_TRIGGER, UpdateTrigger, NULL, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                                  
+FLD_CLR_IS_UPLOAD_RULE, BOOL,, RF_IS_UPLOAD_RULE, IsUploadRule,TV_FALSE, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                                        
+FLD_CLR_CLIENT_LAST_SENT_ALTID, LONG,, RF_LAST_SENT_ALTID, LastSentAltID, NULL, FALSE, NULL  ,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                     
+FLD_CLR_IS_FIXED_RULE, BOOL,, RF_IS_FIXED_RULE, IsFixedRule,TV_FALSE, FALSE, NULL ,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                                          
+FLD_CLR_PUBLIC_KEY, STR,, RF_PUBLIC_KEY, PublicKey, NULL, FALSE, NULL ,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                                             
+FLD_CLR_IS_TALLYLINK_SERVER, BOOL,, RF_IS_TALLYLINK_SERVER, IsTallyLinkServer,TV_FALSE, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                         
+FLD_CLR_SERVER_TALLYLINK_ID, STR,, RF_SERVER_TALLYLINK_ID, ServerTallyLinkId, NULL, FALSE, NULL ,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                   
+FLD_CLR_IS_TALLY_COMPRESSION, BOOL,, RF_IS_TALLY_COMPRESSION, IsTallyCompression,TV_FALSE, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,, 
+FLD_CLR_CLIENT_IS_REMOTE_ALTER, BOOL,, RF_CLIENT_IS_REMOTE_ALTER, ClientIsRemoteAlter,TV_FALSE, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,, //  Alteration state on remote side(Server Rule).
+FLD_CLR_CLIENT_LAST_SENT_MID, LONG,, RF_CLIENT_LAST_SENT_MID, LastSentMID, NULL, FALSE, NULL ,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,//  Last client sent Master ID 
+FLD_CLR_CLIENT_LAST_SENT_ALTMID, LONG,, RF_CLIENT_LAST_SENT_ALTMID,    LastSentAltMID, NULL, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,, //  Last client sent alter Master ID
+FLD_CLR_SYNC_FROM,DATE,,RF_SYNC_FROM,SyncFrom,NULL, FALSE, NULL ,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_SYNC_TO,DATE,,RF_SYNC_TO,SyncTo,NULL, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_ENABLE_VCHTYPE_SYNC,BOOL,,RF_ENABLE_VCHTYPE_SYNC,EnableVchTypeSync,TV_FALSE, FALSE, NULL  ,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_SYNC_AFTER_SAVE,BOOL,,RF_SYNC_AFTER_SAVE,SyncAfterSave,TV_FALSE, FALSE, NULL ,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_ENABLE_ONE_WAY_SYNC,BOOL,,RF_ENABLE_ONE_WAY_SYNC,EnableOneWaySync,TV_FALSE, FALSE, NULL ,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_RULE_DEACTIVATED,BOOL,,RF_RULE_DEACTIVATED,RuleDeactivated,TV_FALSE, FALSE, NULL,,,,,,TRUE,,,// Whether the server rule was deactivated due to changes made in the Client Rule.,,,,,,,,,,,,,,,,,,,
+FLD_CLR_SYNC_OVER_SLOW_CONN,BOOL,,RF_SYNC_OVER_SLOW_CONN,SyncOverSlowConn,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_NOTIFY_SERVER_SYNC,BOOL,,RF_NOTIFY_SERVER_SYNC,NotifyServerSync,TV_FALSE,FALSE,NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_ALLVCHTYPE_SENDRECV,AGGR,,RF_ALLVCHTYPE_SENDRECV,AllVchTypeSendRecv,NULL,TRUE,OBJ_VCHTYPE_SENDRECV,,TRUE,RF_NAME,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_ALLVCHTYPE_SOURCEID,AGGR,,RF_ALLVCHTYPE_SOURCEID,AllVchTypeSourceID,NULL,TRUE,OBJ_VCHTYPE_SOURCEID,,TRUE,RF_NAME,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_ALLVCHTYPE_LASTSENTID,AGGR,,RF_ALLVCHTYPE_LASTSENTID,AllVchTypeLastSentID,NULL,TRUE,OBJ_VCHTYPE_LASTSENTID,,TRUE,RF_NAME,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_ALLOW_SEND_LIST,AGGR,,RF_ALLOW_SEND_LIST,AllowSendList,NULL,TRUE,OBJ_SYNC_ALLOW_DISALLOW,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_DISALLOW_SEND_LIST,AGGR,,RF_DISALLOW_SEND_LIST,DisallowSendList,NULL,TRUE,OBJ_SYNC_ALLOW_DISALLOW,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_ALLOW_RECV_LIST,AGGR,,RF_ALLOW_RECV_LIST,AllowRecvList,NULL,TRUE,OBJ_SYNC_ALLOW_DISALLOW,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_DISALLOW_RECV_LIST,AGGR,,RF_DISALLOW_RECV_LIST,DisallowRecvList,NULL,TRUE,OBJ_SYNC_ALLOW_DISALLOW,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_SYNCAFTERSAVE_LIST,AGGR,,RF_SYNCAFTERSAVE_LIST,SyncAfterSaveList,NULL,TRUE,OBJ_SYNC_AFTER_SAVE,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_EXCLUDE_MASTERS,BOOL,,RF_EXCLUDE_MASTERS,ExcludeMasters,TV_FALSE, FALSE, NULL ,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_CLIENT_LAST_SENT_SUMID, LONG,, RF_LAST_SENT_SUMID, LastSentSUMID, NULL, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                             
+FLD_CLR_LOOP_COLLECTION_SUM, STR,, RF_LOOP_COLLECTION_SUM, LoopCollectionSUM, NULL, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                               
+FLD_CLR_CLIENT_LAST_SENT_ALTSUMID, LONG,, RF_LAST_SENT_ALTSUMID, LastSentAltSUMID, NULL, FALSE, NULL  ,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                     
+FLD_CLR_CLIENT_LAST_SENT_MSTID, LONG,, RF_LAST_SENT_MSTID, LastSentMSTID, NULL, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                             
+FLD_CLR_LOOP_COLLECTION_MST, STR,, RF_LOOP_COLLECTION_MST, LoopCollectionMST, NULL, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                               
+FLD_CLR_CLIENT_LAST_SENT_ALTMSTID, LONG,, RF_LAST_SENT_ALTMSTID, LastSentAltMSTID, NULL, FALSE, NULL  ,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,                                     
+FLD_CLR_LAST_SYNC_DATE,DATE,,RF_LAST_SYNC_DATE,LastSyncDate,NULL,FALSE,NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_LAST_SYNC_TIME,STR,,RF_LAST_SYNC_TIME,LastSyncTime,NULL,FALSE,NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_REMOTE_LAST_SYNC_DATE,DATE,,RF_REMOTE_LAST_SYNC_DATE,RemoteLastSyncDate,NULL,FALSE,NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_REMOTE_LAST_SYNC_TIME,STR,,RF_REMOTE_LAST_SYNC_TIME,RemoteLastSyncTime,NULL,FALSE,NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_CLIENT_LAST_SENT_RET_MSTID,LONG,,RF_LAST_SENT_RET_MSTID,LastSentRetMSTID,NULL,FALSE,NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_CLIENT_LAST_SENT_RET_ALTID,LONG,,RF_LAST_SENT_RET_ALTID,LastSentRetAltID,NULL,FALSE,NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,
+FLD_CLR_LOOP_COLLECTION_RET_TRAN,STR,,RF_LOOP_COLLECTION_RET_TRAN,LoopCollectionRetTran,NULL,FALSE,NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; FLD's which are common b/w ClientRule & ServerRule,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_SOURCE_LAST_TID, LONG,, RF_SOURCE_TID, SourceTID, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  last TID from this source
+*FLD_RULE_SOURCE_LAST_ALTID, LONG,, RF_SOURCE_ALTID, SourceAltID, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  last TID from this source
+*FLD_RULE_SOURCE_LAST_MID, LONG,, RF_SOURCE_MID, SourceMID, NULL, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,//  Last MID from this source
+*FLD_RULE_SOURCE_LAST_ALTMID, LONG,, RF_SOURCE_ALTMID, SourceAltMID, NULL, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,//  Last Alter MID from this source
+*FLD_RULE_SEND_DATA,BOOL,,RF_SEND_DATA,SendData,TV_FALSE,FALSE,NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,// Whether to send data to server
+*FLD_RULE_RECV_DATA,BOOL,,RF_RECV_DATA,RecvData,TV_FALSE, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,// Whether to receive data from server
+*FLD_RULE_UPDATE_MOD_LED_OP_BAL,BOOL,,RF_UPDATE_MOD_LED_OP_BAL,UpdateModLedOpBal,TV_TRUE, FALSE, NULL,,,,,,RF,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_UPDATE_MOD_ITEM_OP_BAL,BOOL,,RF_UPDATE_MOD_ITEM_OP_BAL,UpdateModItemOpBal,TV_TRUE, FALSE, NULL ,,,,,,RF,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_IGNORE_MOD_VCHTYPE_MASTERS,BOOL,,RF_IGNORE_MOD_VCHTYPE_MASTERS,IgnoreModVchTypeMasters,TV_TRUE,FALSE,NULL,,,,,,RF,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_DIRTY_SINCE_LAST_SYNC,BOOL,,RF_DIRTY_SINCE_LAST_SYNC,,TV_TRUE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_VERSION, LONG,,RF_RULE_VERSION,, NULL, FALSE, NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,// Current client rule version
+*FLD_REMOTE_CMP_INFO,AGGR,,NULL,NULL,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+    *FLD_REMOTE_CMP_BOOKS_BEG_FROM,DATE,1,RF_REM_CMP_BOOKS_BEG_FROM,RemoteCmpBooksBegFrom,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_REM_CMP_BASE_CURRENCY,STR,,RF_REM_CMP_BASE_CURRENCY,RemoteCmpBaseCurrency,NULL,FALSE,NULL,,,,,,RF,,,,,,,,,,,,,,,,,,,,,,// Base currency of the remote company
+*FLD_RULE_EXP_BASE_CURRENCY,BOOL,,RF_EXP_BASE_CURRENCY,ExpBaseCurrency,TV_FALSE,FALSE,NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,// Export base currency symbol for bsae currency vouchers
+*FLD_RULE_IMP_FOREX_IN_STD_RATE,BOOL,,RF_IMP_FOREX_IN_STD_RATE,ImpForexInStdRate,TV_FALSE,FALSE,NULL,,,,,,RF,,,,,,,,,,,,,,,,,,,,,,// Import forex voucher with different base currency using standard conversion rate
+*NULL,BOOL,,RF_IS_REM_CMP_BASECURR_SAME,IsBaseCurrSame,TV_FALSE,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,// Is base currency of remote company is same as my base currency
+*FLD_RULE_SYNC_FROM_SER_ENABLED,BOOL,,RF_SYNC_FROM_SER_ENABLED,SyncFromSerEnabled,TV_FALSE,FALSE,NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_SER_USES_TALLYNET,BOOL,,RF_SER_USES_TALLYNET,SerUsesTallyNet,TV_FALSE,FALSE,NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_CLIENT_URL,STR,,RF_CLIENT_URL,ClientURL,NULL,FALSE,NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_CLIENT_ACCOUNTID,STR,,RF_CLIENT_ACCOUNTID,ClientAccountID,NULL,FALSE,NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_CLIENT_SYNC_CMP_NAME,STR,,RF_CLIENT_SYNC_CMP_NAME,ClientSyncCmpName,NULL,FALSE,NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_COMBINE_OP_BRS,BOOL,,RF_COMBINE_OP_BRS,CombineOpeningBRS,TV_FALSE,FALSE,NULL,,,,,,RF,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_IS_OFFLINE_SYNC,BOOL,,RF_IS_OFFLINE_SYNC,IsOfflineSync,TV_FALSE,FALSE,NULL,,,,,,RF,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_GUID,STR,,RF_RULE_GUID,RULEGUID,NULL,FALSE,NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_SYNC_DELETION_LIST,AGGR,,RF_RULE_SYNC_DELETION_LIST,SyncDeletionList,NULL,TRUE,OBJ_SYNC_DELETION_DETAILS,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_SOURCE_LAST_SUMID, LONG,, RF_SOURCE_SUMID, SourceSUMID, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  last TID from this source
+*FLD_RULE_SOURCE_LAST_ALTSUMID, LONG,, RF_SOURCE_ALTSUMID, SourceAltSUMID, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  last TID from this source
+*FLD_RULE_IS_MASTER_SYNC,BOOL,,RF_IS_MASTER_SYNC,IsMasterSync,TV_FALSE,FALSE,NULL,,,,,,RF,,,,,,,,,,,,,,,,,,,,,,// Whether to send data to server
+*FLD_RULE_SOURCE_LAST_MSTID, LONG,, RF_SOURCE_MSTID, SourceMSTID, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  last TID from this source
+*FLD_RULE_SOURCE_LAST_ALTMSTID, LONG,, RF_SOURCE_ALTMSTID, SourceAltMSTID, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  last TID from this source
+*FLD_RULE_DISABLE_DELETED_TRANS,BOOL,,RF_DISABLE_DELETED_TRANS,DisableDeletedTransaction,TV_FALSE,FALSE,NULL,,,,,,RF,,,,,,,,,,,,,,,,,,,,,,// Whether to send data to server
+*FLD_RULE_IGNORE_MST_IF_PRESENT,BOOL,,RF_IGNORE_MST_IF_PRESENT,IgnoreMstIfPresent,TV_FALSE,FALSE,NULL,,,,,,RF,,,,,,,,,,,,,,,,,,,,,,// Whether to send data to server
+*FLD_RULE_LAST_REF_SOURCE_MSTID,LONG,,RF_LAST_REF_SOURCE_MSTID,LastRefSrcMstId,NULL,FALSE,NULL,,,,,,RF,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_LAST_REF_REMOTE_MSTID,LONG,,RF_LAST_REF_REMOTE_MSTID,LastRefRemMstId,NULL,FALSE,NULL,,,,,,RF,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_LAST_REF_SOURCE_MSTALTID,LONG,,RF_LAST_REF_SOURCE_MSTALTID,LastRefSrcMstAltId,NULL,FALSE,NULL,,,,,,RF,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_LAST_REF_REMOTE_MSTALTID,LONG,,RF_LAST_REF_REMOTE_MSTALTID,LastRefRemMstAltId,NULL,FALSE,NULL,,,,,,RF,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_LAST_ACK_MSTID,LONG,,RF_LAST_ACK_MSTID,LastAckMstId,NULL,FALSE,NULL,,,,,,RF,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_LAST_ACK_ALTID,LONG,,RF_LAST_ACK_ALTID,LastAckAltId,NULL,FALSE,NULL,,,,,,RF,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_SYNC_EXCEPTION_LIST,AGGR,,RF_RULE_SYNC_EXCEPTION_LIST,SyncExceptionList,NULL,TRUE,OBJ_SYNC_EXCEPTION_DETAILS,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_SYNC_REMOTE_EXCEPTION_LIST,AGGR,,RF_RULE_SYNC_REMOTE_EXCEPTION_LIST,SyncRemoteExceptionList,NULL,TRUE,OBJ_SYNC_EXCEPTION_DETAILS,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_BATCH_IN_PROGRESS,BOOL,,RF_RULE_BATCH_IN_PROGRESS,IsBatchInProgress,TV_FALSE,FALSE,NULL,,,,,,RF,,,,,,,,,,,,,,,,,,,,,,// Whether to send data to server
+*FLD_RULE_BATCH_LAST_MSTID, LONG,, RF_RULE_BATCH_MSTID, BatchLastMstID, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  last TID from this source
+*FLD_RULE_BATCH_LAST_ALTMSTID, LONG,, RF_RULE_BATCH_ALTMSTID, BatchLastAltMstID, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  last TID from this source
+*FLD_RULE_BATCH_LAST_VCHID, LONG,, RF_RULE_BATCH_VCHID, BatchLastVchID, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  last TID from this source
+*FLD_RULE_BATCH_LAST_ALTVCHID, LONG,, RF_RULE_BATCH_ALTVCHID, BatchLastAltVchID, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  last TID from this source
+*FLD_RULE_BATCH_LAST_SUMID, LONG,, RF_RULE_BATCH_SUMID, BatchLastSumID, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  last TID from this source
+*FLD_RULE_BATCH_LAST_ALTSUMID, LONG,, RF_RULE_BATCH_ALTSUMID, BatchLastAltSumID, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,//  last TID from this source
+*FLD_RULE_IGNORE_VCH_NUMBERING,BOOL,,RF_RULE_IGNORE_VCH_NUMBERING,IgnoreVchNumbering,TV_FALSE,FALSE,NULL,,,,,,RF,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_REM_IGNORE_VCH_NUMBERING,BOOL,,RF_RULE_REM_IGNORE_VCH_NUMBERING,RemIgnoreVchNumbering,TV_FALSE,FALSE,NULL,,,,,,RF,,,,,,,,,,,,,,,,,,,,,,
+*FLD_RULE_DISABLE_SUMM_TRANS,BOOL,,RF_DISABLE_SUMM_TRANS,DisableSummaryTransaction,TV_FALSE,FALSE,NULL,,,,,,RF,,,,,,,,,,,,,,,,,,,,,,// Whether to send data to server
+*FLD_RULE_SOURCE_LAST_RET_MSTID,LONG,,RF_SOURCE_RET_MSTID,SourceRetMSTID,NULL,FALSE,NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,//  last MID of Return Trans from this source
+*FLD_RULE_SOURCE_LAST_RET_ALTID,LONG,,RF_SOURCE_RET_ALTID,SourceRetAltID,NULL,FALSE,NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,//  last ALTID of Return Trans from this source
+*FLD_RULE_BATCH_LAST_RET_MSTID,LONG,,RF_RULE_BATCH_RET_MSTID,BatchLastRetMSTID,NULL,FALSE,NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,//  last MSTID from this source
+*FLD_RULE_BATCH_LAST_RET_ALTID,LONG,,RF_RULE_BATCH_RET_ALTID,BatchLastRetAltID,NULL,FALSE,NULL,,,,,,TRUE,,,,,,,,,,,,,,,,,,,,,,//  last ALTER ID from this source
+*FLD_RULE_SYNC_DELETION_LIST_RET_TRANS,AGGR,,RF_RULE_SYNC_DELETION_LIST_RET_TRANS,SyncDeletionListRetTrans,NULL,TRUE,OBJ_SYNC_DELETION_DETAILS,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; Calculated RF's,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*NULL, STR,, RF_REMOTE_URL, RemoteURL, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*NULL, BOOL,, RF_SECURITY_ON, Is Security On, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*NULL, STR,, RF_OWNER_NAME, Owner Name, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*NULL, STR,, RF_OWNER_PASSWORD, Owner Password, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*NULL, NUM,, RF_RECURSION_DEPTH, Depth, NULL, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*NULL,BOOL,,RF_DEEMED_POSITIVE,IsDeemedPositive,NULL,FALSE,NULL,,,,,FALSE,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*NULL,LONG,, RF_MASTER_ID, MasterId,0, FALSE, NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*NULL,BOOL,,RF_CAN_DELETE,Can Delete,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+;; The RFs need to added to all masters,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*NULL,STR,,RF_ORIGINAL_NAME,OriginalName,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*NULL,NUM,,RF_ORIGINAL_DEPTH,OriginalDepth,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+*NULL,NUM,,RF_ORIGINAL_SORT_POSITION,OriginalSortPosition,NULL,FALSE,NULL,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
